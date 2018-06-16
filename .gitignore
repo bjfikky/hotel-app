@@ -15,7 +15,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
-README.md
+/src/README.md
 
 
 npm-debug.log*
