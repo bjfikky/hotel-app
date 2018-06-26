@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, {Component, Fragment} from 'react';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import Login from './containers/login';
 
@@ -8,7 +8,7 @@ import './App.css';
 
 class App extends Component {
     render() {
-        if (this.props.authenticated == false) {
+        if (this.props.authenticated === false) {
             return (
                 <BrowserRouter>
                     <Fragment>
@@ -22,6 +22,7 @@ class App extends Component {
         }
         
         return (
+            //TODO: Set up routes for when user is authenticated
             <div className="App">
                 
                 <h1>Logged in</h1>
@@ -40,3 +41,4 @@ function mapStateToProps(state) {
 export default connect(
     mapStateToProps
 )(App);
+
