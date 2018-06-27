@@ -1,5 +1,5 @@
 
-const auth = (state = false, action) => {
+const auth = (state = true, action) => {
     
     switch (action.type) {
         

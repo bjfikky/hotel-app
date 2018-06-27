@@ -3,8 +3,12 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import Login from './containers/login';
+import Menu from './components/primary-menu';
+import Dashboard from './containers/dashboard';
 
 import './App.css';
+
+
 
 class App extends Component {
     render() {
@@ -14,8 +18,8 @@ class App extends Component {
                     <Fragment>
                         <Switch>
                             <Route path="/login" component={Login}/>
+                            <Redirect to="/login" component={Login}/>
                         </Switch>
-                        <Redirect to="/login"/>
                     </Fragment>
                 </BrowserRouter>
             );
@@ -23,10 +27,16 @@ class App extends Component {
         
         return (
             //TODO: Set up routes for when user is authenticated
-            <div className="App">
-                
-                <h1>Logged in</h1>
-            </div>
+            <BrowserRouter>
+                <Fragment>
+                    <Menu/>
+                    <div className="App">
+                        <Switch>
+                            <Route path="/" component={Dashboard}/>
+                        </Switch>
+                    </div>
+                </Fragment>
+            </BrowserRouter>
         );
     }
 }
