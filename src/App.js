@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import Login from './containers/login';
 import Menu from './components/primary-menu';
-import Dashboard from './containers/dashboard';
+import Dashboard from './containers/dashboard/index';
 
 import './App.css';
 

@@ -16,13 +16,20 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import HomeIcon from '@material-ui/icons/Home';
-import PersonIcon from '@material-ui/icons/Person';
+import PeopleIcon from '@material-ui/icons/People';
 import Collapse from '@material-ui/core/Collapse';
-import StarBorder from '@material-ui/icons/StarBorder';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import PersonAdd from '@material-ui/icons/PersonAdd';
 import FormatListBulleted from '@material-ui/icons/FormatListBulleted';
+import Archive from '@material-ui/icons/Archive';
+import Search from '@material-ui/icons/Search';
+import RemoveCircle from '@material-ui/icons/RemoveCircle';
+import AddCircle from '@material-ui/icons/AddCircleOutline';
+import One from '@material-ui/icons/LooksOne';
+import Two from '@material-ui/icons/LooksTwo';
+import Star from '@material-ui/icons/Star';
+import Power from '@material-ui/icons/PowerSettingsNew';
 
 
 const styles = {
@@ -35,7 +42,7 @@ const styles = {
     flex: {
         flex: 1,
     },
-    guestMenu: {
+    subMenu: {
         paddingLeft: '30px',
     },
     menuButton: {
@@ -47,7 +54,8 @@ const styles = {
 class TemporaryDrawer extends Component {
     state = {
         left: false,
-        guestOpen: true
+        guestOpen: true,
+        roomOpen: false
     };
     
     toggleDrawer = (open) => () => {
@@ -56,35 +64,96 @@ class TemporaryDrawer extends Component {
         });
     };
     
-    handleGuestClick = () => {
+    handleGuestsMenuClick = () => {
         this.setState(state => ({ guestOpen: !state.guestOpen }));
     }
     
+    handleRoomsMenuClick = () => {
+        this.setState(state => ({ roomOpen: !state.roomOpen }));
+    }
     
+
     render() {
         
         const guestMenuList = (
             <Collapse in={this.state.guestOpen} timeout="auto" unmountOnExit>
-                <List style={styles.guestMenu}>
-                    <ListItem button>
+                <List style={styles.subMenu}>
+                    <ListItem button onClick={this.toggleDrawer(false)}>
                         <ListItemIcon>
                             <PersonAdd />
                         </ListItemIcon>
                         <ListItemText inset primary="Add Guest" />
                     </ListItem>
     
-                    <ListItem button>
+                    <ListItem button onClick={this.toggleDrawer(false)}>
                         <ListItemIcon>
                             <FormatListBulleted />
                         </ListItemIcon>
                         <ListItemText inset primary="Guests List" />
                     </ListItem>
+    
+                    <ListItem button onClick={this.toggleDrawer(false)}>
+                        <ListItemIcon>
+                            <Archive />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Past Guests" />
+                    </ListItem>
+    
+                    <ListItem button onClick={this.toggleDrawer(false)}>
+                        <ListItemIcon>
+                            <Search />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Search" />
+                    </ListItem>
+                </List>
+            </Collapse>
+        );
+    
+        const roomMenuList = (
+            <Collapse in={this.state.roomOpen} timeout="auto" unmountOnExit>
+                <List style={styles.subMenu}>
+                    <ListItem button onClick={this.toggleDrawer(false)}>
+                        <ListItemIcon>
+                            <AddCircle />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Empty" />
+                    </ListItem>
+                
+                    <ListItem button onClick={this.toggleDrawer(false)}>
+                        <ListItemIcon>
+                            <RemoveCircle />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Occupied" />
+                    </ListItem>
+                
+                    <ListItem button onClick={this.toggleDrawer(false)}>
+                        <ListItemIcon>
+                            <One />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Singles" />
+                    </ListItem>
+                
+                    <ListItem button onClick={this.toggleDrawer(false)}>
+                        <ListItemIcon>
+                            <Two />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Doubles" />
+                    </ListItem>
+    
+                    <ListItem button onClick={this.toggleDrawer(false)}>
+                        <ListItemIcon>
+                            <Star />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Suites" />
+                    </ListItem>
                 </List>
             </Collapse>
         );
         
+        
+        
         const sideList = (
-            <List component="nav" style={styles.list} subheader={<ListSubheader component="div">App Menu Items</ListSubheader>}>
+            <List component="nav" style={styles.list} subheader={<ListSubheader component="div">App Menu</ListSubheader>}>
                 <ListItem button onClick={this.toggleDrawer(false)}>
                     <ListItemIcon>
                         <DashboardIcon />
@@ -92,9 +161,9 @@ class TemporaryDrawer extends Component {
                     <ListItemText primary="Dashboard" />
                 </ListItem>
                 
-                <ListItem button onClick={this.handleGuestClick}>
+                <ListItem button onClick={this.handleGuestsMenuClick}>
                     <ListItemIcon>
-                        <PersonIcon />
+                        <PeopleIcon />
                     </ListItemIcon>
                     <ListItemText primary="Guests" />
                     {this.state.guestOpen ? <ExpandLess /> : <ExpandMore />}
@@ -102,11 +171,21 @@ class TemporaryDrawer extends Component {
                 
                 {guestMenuList}
                 
-                <ListItem button onClick={this.toggleDrawer(false)}>
+                <ListItem button onClick={this.handleRoomsMenuClick}>
                     <ListItemIcon>
                         <HomeIcon />
                     </ListItemIcon>
                     <ListItemText primary="Rooms" />
+                    {this.state.roomOpen ? <ExpandLess /> : <ExpandMore />}
+                </ListItem>
+                
+                {roomMenuList}
+                
+                <Divider/>
+    
+                <ListItem button>
+                    
+                    <ListItemText primary="Logout" />
                 </ListItem>
             </List>
         );

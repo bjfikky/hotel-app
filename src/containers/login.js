@@ -19,7 +19,6 @@ const formElement = {
 class Login extends Component {
     render() {
         return (
-            //TODO: Build the login page with Material-UI
             <div  style={formStyle}>
                 <h1>Hotel App</h1>
                 <div style={formElement}>
