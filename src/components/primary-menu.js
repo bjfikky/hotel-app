@@ -29,7 +29,7 @@ import AddCircle from '@material-ui/icons/AddCircleOutline';
 import One from '@material-ui/icons/LooksOne';
 import Two from '@material-ui/icons/LooksTwo';
 import Star from '@material-ui/icons/Star';
-import Power from '@material-ui/icons/PowerSettingsNew';
+
 
 
 const styles = {
