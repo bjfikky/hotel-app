@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca1e350d-5a50-4d72-a370-1430d6a1a01e" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/containers/dashboard/guests.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/containers/dashboard/reservation.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/containers/dashboard/rooms.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change beforePath="$PROJECT_DIR$/src/components/primary-menu.js" afterPath="$PROJECT_DIR$/src/components/primary-menu.js" />
-      <change beforePath="$PROJECT_DIR$/src/containers/dashboard/index.js" afterPath="$PROJECT_DIR$/src/containers/dashboard/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/dashboard/reservation.js" afterPath="$PROJECT_DIR$/src/containers/dashboard/reservation.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -92,8 +86,8 @@
       <file leaf-file-name="reservation.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/containers/dashboard/reservation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="64" column="36" lean-forward="false" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
+            <state relative-caret-position="221">
+              <caret line="26" column="3" lean-forward="false" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -292,12 +286,12 @@
       <updated>1529095498892</updated>
       <workItem from="1529095500202" duration="3375000" />
       <workItem from="1529896376973" duration="3010000" />
-      <workItem from="1529972729701" duration="35085000" />
+      <workItem from="1529972729701" duration="36907000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41470000" />
+    <option name="totallyTimeSpent" value="43292000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -632,8 +626,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/dashboard/reservation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="64" column="36" lean-forward="false" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
+        <state relative-caret-position="221">
+          <caret line="26" column="3" lean-forward="false" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

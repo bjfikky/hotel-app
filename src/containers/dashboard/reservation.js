@@ -24,7 +24,7 @@ class Reservation extends Component {
     }
     
     //TODO: Use date formatter package to set the checkin date to today's date
-    //TODO: Add a grid in the form that will be toggled with the "more options" link
+   
     render() {
         return (
             <Grid item md={4} xs={12}>
@@ -56,15 +56,22 @@ class Reservation extends Component {
                                     }}
                                 />
                             </Grid>
-                            
-                            {this.state.moreOptions ?
-                                <p>more</p>
-                                
-                                :
-                                
-                                null
-                            }
                         </Grid>
+    
+                        {this.state.moreOptions ?
+                            <div style={{padding: '5px'}}>
+                                <span style={{fontSize: '14px', paddingRight: '8px'}}>Adults: <input style={{width: '40px'}} type="number" min="1" max="10" placeholder="0"/></span>
+            
+                                <span style={{fontSize: '14px', paddingRight: '8px'}}>Children: <input style={{width: '40px'}} type="number" min="1" max="10" placeholder="0"/></span>
+            
+                                <span style={{fontSize: '14px', paddingRight: '8px'}}>Rooms: <input style={{width: '40px'}} type="number" min="1" max="5" placeholder="0"/></span>
+                            </div>
+        
+        
+                            :
+        
+                            null
+                        }
                         
                         <a onClick={this.handleMoreOptions} href="" style={{paddingLeft: '5px', textDecoration: 'none'}}><small>{moreOptions}</small></a>
                         
@@ -85,7 +92,11 @@ class Reservation extends Component {
     handleMoreOptions = (event) => {
         event.preventDefault();
         console.log("more");
-        moreOptions = "less options";
+        
+        if (moreOptions === "more options") {
+            moreOptions = "less options"
+        } else { moreOptions = "more options"}
+        
         this.setState({
             moreOptions: !this.state.moreOptions,
         });
