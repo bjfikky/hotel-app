@@ -8,12 +8,12 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
 
-
+//TODO: Choose same height for all paper?
 const style = {
     paper: {
         padding: '10px 10px 10px 10px',
         margin: '10px',
-        height: '400px'
+        height: ''
     },
     root: {
         flexGrow: 1,

@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
 
 
 const style = {
@@ -58,6 +59,8 @@ class Reservation extends Component {
                             </Grid>
                         </Grid>
     
+                        <a onClick={this.handleMoreOptions} href="" style={{paddingLeft: '5px', textDecoration: 'none'}}><small>{moreOptions}</small></a>
+                        
                         {this.state.moreOptions ?
                             <div style={{padding: '5px'}}>
                                 <span style={{fontSize: '14px', paddingRight: '8px'}}>Adults: <input style={{width: '40px'}} type="number" min="1" max="10" placeholder="0"/></span>
@@ -73,15 +76,48 @@ class Reservation extends Component {
                             null
                         }
                         
-                        <a onClick={this.handleMoreOptions} href="" style={{paddingLeft: '5px', textDecoration: 'none'}}><small>{moreOptions}</small></a>
-                        
                         <div style={{padding: '10px 5px'}}>
                             <Button variant="contained" color="primary">
                                 Search
                             </Button>
                         </div>
-    
                         
+                    </form>
+    
+                    <Divider style={{margin: '20px 0px'}}/>
+                    
+                    <form>
+                        <Grid container>
+                            <Grid item sm style={style.date}>
+                                <TextField
+                                    id="confirmation"
+                                    label="Confirmation Number"
+                                    type="string"
+                                    placeholder="Confirmation Number"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                />
+                            </Grid>
+                            
+                            <Grid item sm style={style.date}>
+                                <TextField
+                                    id="lastName"
+                                    label="Last Name"
+                                    type="string"
+                                    placeholder="Last Name"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                />
+                            </Grid>
+                        </Grid>
+    
+                        <div style={{padding: '10px 5px'}}>
+                            <Button variant="contained" color="primary">
+                                View Reservation
+                            </Button>
+                        </div>
                     </form>
                     
                 </Paper>

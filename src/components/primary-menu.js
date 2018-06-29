@@ -29,6 +29,7 @@ import AddCircle from '@material-ui/icons/AddCircleOutline';
 import One from '@material-ui/icons/LooksOne';
 import Two from '@material-ui/icons/LooksTwo';
 import Star from '@material-ui/icons/Star';
+import Home from '@material-ui/icons/Home';
 
 
 
@@ -145,6 +146,13 @@ class TemporaryDrawer extends Component {
                             <Star />
                         </ListItemIcon>
                         <ListItemText inset primary="Suites" />
+                    </ListItem>
+    
+                    <ListItem button onClick={this.toggleDrawer(false)}>
+                        <ListItemIcon>
+                            <Home />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Bungalows" />
                     </ListItem>
                 </List>
             </Collapse>
