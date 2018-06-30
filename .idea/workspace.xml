@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ca1e350d-5a50-4d72-a370-1430d6a1a01e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/components/primary-menu.js" afterPath="$PROJECT_DIR$/src/components/primary-menu.js" />
-      <change beforePath="$PROJECT_DIR$/src/containers/dashboard/index.js" afterPath="$PROJECT_DIR$/src/containers/dashboard/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/containers/dashboard/reservation.js" afterPath="$PROJECT_DIR$/src/containers/dashboard/reservation.js" />
-      <change beforePath="$PROJECT_DIR$/src/containers/dashboard/rooms.js" afterPath="$PROJECT_DIR$/src/containers/dashboard/rooms.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/dashboard/guests.js" afterPath="$PROJECT_DIR$/src/containers/dashboard/guests.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -64,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rooms.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="rooms.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/dashboard/rooms.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="635">
-              <caret line="41" column="60" lean-forward="true" selection-start-line="41" selection-start-column="60" selection-end-line="41" selection-end-column="60" />
+            <state relative-caret-position="91">
+              <caret line="9" column="50" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="9" selection-end-column="50" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -76,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="guests.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="guests.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/containers/dashboard/guests.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state relative-caret-position="391">
+              <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -163,11 +160,11 @@
         <option value="$PROJECT_DIR$/src/components/primary-menu/index.js" />
         <option value="$PROJECT_DIR$/src/containers/dashboard.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/containers/dashboard/guests.js" />
         <option value="$PROJECT_DIR$/src/containers/dashboard/reservation.js" />
         <option value="$PROJECT_DIR$/src/containers/dashboard/index.js" />
         <option value="$PROJECT_DIR$/src/components/primary-menu.js" />
         <option value="$PROJECT_DIR$/src/containers/dashboard/rooms.js" />
+        <option value="$PROJECT_DIR$/src/containers/dashboard/guests.js" />
       </list>
     </option>
   </component>
@@ -291,12 +288,12 @@
       <updated>1529095498892</updated>
       <workItem from="1529095500202" duration="3375000" />
       <workItem from="1529896376973" duration="3010000" />
-      <workItem from="1529972729701" duration="41295000" />
+      <workItem from="1529972729701" duration="42742000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47680000" />
+    <option name="totallyTimeSpent" value="49127000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -591,16 +588,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/dashboard/guests.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/dashboard/reservation.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1462">
@@ -633,8 +620,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/dashboard/rooms.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="635">
-          <caret line="41" column="60" lean-forward="true" selection-start-line="41" selection-start-column="60" selection-end-line="41" selection-end-column="60" />
+        <state relative-caret-position="91">
+          <caret line="9" column="50" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="9" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/dashboard/guests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
