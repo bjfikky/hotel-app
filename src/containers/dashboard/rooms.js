@@ -15,7 +15,7 @@ class Rooms extends Component {
     
     id = 0;
     
-    createData(description, occupied, empty) {
+    createData = (description, occupied, empty) => {
         let id = this.id += 1;
         return { id, description, occupied, empty};
     }

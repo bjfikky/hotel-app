@@ -13,7 +13,7 @@ class Guests extends Component {
     
     id = 0;
     
-    createData(description, number) {
+    createData = (description, number) => {
         let id = this.id += 1;
         return { id, description, number};
     }

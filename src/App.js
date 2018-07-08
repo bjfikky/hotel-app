@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import Login from './containers/login';
 import Menu from './components/primary-menu';
 import Dashboard from './containers/dashboard/index';
+import RoomsList from './containers/room/rooms-list';
 
 import './App.css';
 
@@ -17,7 +18,7 @@ class App extends Component {
                 <BrowserRouter>
                     <Fragment>
                         <Switch>
-                            <Route path="/login" component={Login}/>
+                            <Route exact path="/login" component={Login}/>
                             <Redirect to="/login" component={Login}/>
                         </Switch>
                     </Fragment>
@@ -32,7 +33,9 @@ class App extends Component {
                     <Menu/>
                     <div className="App">
                         <Switch>
-                            <Route path="/" component={Dashboard}/>
+                            <Route exact path="/" component={Dashboard}/>
+                            <Route exact path="/Search/Rooms" component={RoomsList}/>
+                            <Route component={NotFound}/>
                         </Switch>
                     </div>
                 </Fragment>
@@ -41,6 +44,14 @@ class App extends Component {
     }
 }
 
+const NotFound = () => {
+    return (
+        <div>
+            <h3>Page not found! Please navigate using the menu bar.</h3>
+        </div>
+    );
+    
+};
 
 function mapStateToProps(state) {
     return {

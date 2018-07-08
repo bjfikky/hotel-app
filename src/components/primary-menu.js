@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -9,15 +10,16 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
+import Badge from '@material-ui/core/Badge';
+import Collapse from '@material-ui/core/Collapse';
+
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
-import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import PersonAdd from '@material-ui/icons/PersonAdd';
@@ -30,6 +32,7 @@ import One from '@material-ui/icons/LooksOne';
 import Two from '@material-ui/icons/LooksTwo';
 import Star from '@material-ui/icons/Star';
 import Home from '@material-ui/icons/Home';
+import MailIcon from '@material-ui/icons/Mail';
 
 
 
@@ -207,8 +210,15 @@ class TemporaryDrawer extends Component {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="title" color="inherit" style={styles.flex}>
-                            Hotel App
+                            <Link to="/" style={{textDecoration: 'none', color: '#fff' }}>Hotel App</Link>
+                            
                         </Typography>
+                        
+                        <Button color="inherit">
+                            <Badge  badgeContent={4} color="secondary">
+                                <MailIcon />
+                            </Badge>
+                        </Button>
                         
                         <Button color="inherit">Logout</Button>
                     </Toolbar>

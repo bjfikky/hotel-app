@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
+
 
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -19,13 +21,15 @@ let moreOptions = "more options";
 
 
 class Reservation extends Component {
+    constructor(props) {
+        super(props);
     
-    state = {
-        moreOptions: false,
+        this.state = {
+            moreOptions: false,
+        }
     }
     
     //TODO: Use date formatter package to set the checkin date to today's date
-   
     render() {
         return (
             <Grid item md={4} xs={12}>
@@ -65,7 +69,7 @@ class Reservation extends Component {
                             <div style={{padding: '5px'}}>
                                 <span style={{fontSize: '14px', paddingRight: '8px'}}>Adults: <input style={{width: '40px'}} type="number" min="1" max="10" placeholder="0"/></span>
             
-                                <span style={{fontSize: '14px', paddingRight: '8px'}}>Children: <input style={{width: '40px'}} type="number" min="1" max="10" placeholder="0"/></span>
+                                <span style={{fontSize: '14px', paddingRight: '8px'}}>Children: <input style={{width: '40px'}} type="number" min="0" max="10" placeholder="0"/></span>
             
                                 <span style={{fontSize: '14px', paddingRight: '8px'}}>Rooms: <input style={{width: '40px'}} type="number" min="1" max="5" placeholder="0"/></span>
                             </div>
@@ -77,9 +81,11 @@ class Reservation extends Component {
                         }
                         
                         <div style={{padding: '10px 5px'}}>
-                            <Button variant="contained" color="primary">
-                                Search
-                            </Button>
+                            <Link to="/Search/Rooms" style={{textDecoration: 'none'}}>
+                                <Button variant="contained" color="primary">
+                                    Search
+                                </Button>
+                            </Link>
                         </div>
                         
                     </form>

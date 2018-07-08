@@ -13,7 +13,8 @@ const style = {
     paper: {
         padding: '10px 10px 10px 10px',
         margin: '10px',
-        height: ''
+        height: '',
+        overflowX: 'auto',    //allows horizontal scrolling on table
     },
     root: {
         flexGrow: 1,
@@ -27,6 +28,10 @@ const style = {
 
 
 class Dashboard extends Component {
+    componentDidMount() {
+        console.log("Mounted");
+    }
+    
     render() {
         return (
             <Fragment>
