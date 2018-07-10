@@ -1,7 +1,7 @@
 import React from 'react';
 
-import RoomItem from './room-item';
-import RoomFilters from '../../components/room-filter';
+import RoomItem from './search-room-item';
+import RoomFilters from './search-room-filter';
 
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';

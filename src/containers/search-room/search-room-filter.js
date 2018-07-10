@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import One from '@material-ui/icons/LooksOne';
+import Two from '@material-ui/icons/LooksTwo';
+import Star from '@material-ui/icons/Star';
+import Home from '@material-ui/icons/Home';
 
 
 class RoomFilters extends Component {
@@ -26,9 +27,10 @@ class RoomFilters extends Component {
                 showLabels
                 
             >
-                <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-                <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-                <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+                <BottomNavigationAction label="Singles" icon={<One />} />
+                <BottomNavigationAction label="Doubles" icon={<Two />} />
+                <BottomNavigationAction label="Suites" icon={<Star />} />
+                <BottomNavigationAction label="Bungalows" icon={<Home />} />
             </BottomNavigation>
         );
     }

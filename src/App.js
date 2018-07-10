@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import Login from './containers/login';
 import Menu from './components/primary-menu';
 import Dashboard from './containers/dashboard/index';
-import RoomsList from './containers/room/rooms-list';
+import RoomsList from './containers/search-room/search-rooms-list';
 
 import './App.css';
 

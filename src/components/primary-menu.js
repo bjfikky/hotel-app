@@ -165,12 +165,14 @@ class TemporaryDrawer extends Component {
         
         const sideList = (
             <List component="nav" style={styles.list} subheader={<ListSubheader component="div">App Menu</ListSubheader>}>
-                <ListItem button onClick={this.toggleDrawer(false)}>
-                    <ListItemIcon>
-                        <DashboardIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Dashboard" />
-                </ListItem>
+                <Link to="/" style={{textDecoration: 'none'}}>
+                    <ListItem button onClick={this.toggleDrawer(false)}>
+                        <ListItemIcon>
+                            <DashboardIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Dashboard" />
+                    </ListItem>
+                </Link>
                 
                 <ListItem button onClick={this.handleGuestsMenuClick}>
                     <ListItemIcon>
