@@ -6,6 +6,7 @@ import Login from './containers/login';
 import Menu from './components/primary-menu';
 import Dashboard from './containers/dashboard/index';
 import RoomsList from './containers/search-room/search-rooms-list';
+import SingleRooms from './containers/rooms/rooms-singles';
 
 import './App.css';
 
@@ -35,6 +36,7 @@ class App extends Component {
                         <Switch>
                             <Route exact path="/" component={Dashboard}/>
                             <Route exact path="/Search/Rooms" component={RoomsList}/>
+                            <Route exact path="/Rooms/Singles" component={SingleRooms}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </div>
