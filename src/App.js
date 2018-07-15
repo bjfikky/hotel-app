@@ -7,6 +7,7 @@ import Menu from './components/primary-menu';
 import Dashboard from './containers/dashboard/index';
 import RoomsList from './containers/search-room/search-rooms-list';
 import SingleRooms from './containers/rooms/rooms-singles';
+import OccupiedRooms from './containers/rooms/rooms-occupied';
 
 import './App.css';
 
@@ -37,6 +38,7 @@ class App extends Component {
                             <Route exact path="/" component={Dashboard}/>
                             <Route exact path="/Search/Rooms" component={RoomsList}/>
                             <Route exact path="/Rooms/Singles" component={SingleRooms}/>
+                            <Route exact path="/Rooms/Occupied" component={OccupiedRooms}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </div>

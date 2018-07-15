@@ -122,20 +122,25 @@ class TemporaryDrawer extends Component {
                         </ListItemIcon>
                         <ListItemText inset primary="Empty" />
                     </ListItem>
-                
-                    <ListItem button onClick={this.toggleDrawer(false)}>
-                        <ListItemIcon>
-                            <RemoveCircle />
-                        </ListItemIcon>
-                        <ListItemText inset primary="Occupied" />
-                    </ListItem>
-                
-                    <ListItem button onClick={this.toggleDrawer(false)}>
-                        <ListItemIcon>
-                            <One />
-                        </ListItemIcon>
-                        <ListItemText inset primary="Singles" />
-                    </ListItem>
+
+                    <Link to="/Rooms/Occupied" style={{textDecoration: "none"}}>
+                        <ListItem button onClick={this.toggleDrawer(false)}>
+                            <ListItemIcon>
+                                <RemoveCircle />
+                            </ListItemIcon>
+                            <ListItemText inset primary="Occupied" />
+                        </ListItem>
+                    </Link>
+
+                    <Link to="/Rooms/Singles" style={{textDecoration: "none"}}>
+                        <ListItem button onClick={this.toggleDrawer(false)}>
+                            <ListItemIcon>
+                                <One />
+                            </ListItemIcon>
+                            <ListItemText inset primary="Singles" />
+                        </ListItem>
+                    </Link>
+
                 
                     <ListItem button onClick={this.toggleDrawer(false)}>
                         <ListItemIcon>
