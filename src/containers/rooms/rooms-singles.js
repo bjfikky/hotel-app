@@ -62,7 +62,7 @@ class SingleRooms extends Component {
                                         
                                         <TableCell style={{color: statusColor }}  >{n.status}</TableCell>
                                         
-                                        <TableCell style={{color: 'green'}}>{n.reservation}</TableCell>
+                                        <TableCell>{n.reservation}</TableCell>
                                     </TableRow>
                                 );
                             })}
