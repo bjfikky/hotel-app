@@ -42,7 +42,7 @@ class SingleRooms extends Component {
                             <TableRow>
                                 <TableCell>Room Name</TableCell>
                                 <TableCell>Occupied</TableCell>
-                                <TableCell>Reservation Dates</TableCell>
+                                <TableCell>Reservation (next 30 days)</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>

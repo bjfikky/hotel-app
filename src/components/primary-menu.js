@@ -116,12 +116,15 @@ class TemporaryDrawer extends Component {
         const roomMenuList = (
             <Collapse in={this.state.roomOpen} timeout="auto" unmountOnExit>
                 <List style={styles.subMenu}>
-                    <ListItem button onClick={this.toggleDrawer(false)}>
-                        <ListItemIcon>
-                            <AddCircle />
-                        </ListItemIcon>
-                        <ListItemText inset primary="Empty" />
-                    </ListItem>
+
+                    <Link to="/Rooms/Empty" style={{textDecoration: "none"}}>
+                        <ListItem button onClick={this.toggleDrawer(false)}>
+                            <ListItemIcon>
+                                <AddCircle />
+                            </ListItemIcon>
+                            <ListItemText inset primary="Empty" />
+                        </ListItem>
+                    </Link>
 
                     <Link to="/Rooms/Occupied" style={{textDecoration: "none"}}>
                         <ListItem button onClick={this.toggleDrawer(false)}>
