@@ -7,6 +7,9 @@ import Menu from './components/primary-menu';
 import Dashboard from './containers/dashboard/index';
 import RoomsList from './containers/search-room/search-rooms-list';
 import SingleRooms from './containers/rooms/rooms-singles';
+import DoubleRooms from './containers/rooms/rooms-doubles';
+import SuiteRooms from './containers/rooms/rooms-suites';
+import BungalowRooms from './containers/rooms/rooms-bungalows';
 import OccupiedRooms from './containers/rooms/rooms-occupied';
 import EmptyRooms from './containers/rooms/rooms-empty';
 
@@ -39,6 +42,9 @@ class App extends Component {
                             <Route exact path="/" component={Dashboard}/>
                             <Route exact path="/Search/Rooms" component={RoomsList}/>
                             <Route exact path="/Rooms/Singles" component={SingleRooms}/>
+                            <Route exact path="/Rooms/Doubles" component={DoubleRooms}/>
+                            <Route exact path="/Rooms/Suites" component={SuiteRooms}/>
+                            <Route exact path="/Rooms/Bungalows" component={BungalowRooms}/>
                             <Route exact path="/Rooms/Occupied" component={OccupiedRooms}/>
                             <Route exact path="/Rooms/Empty" component={EmptyRooms}/>
                             <Route component={NotFound}/>

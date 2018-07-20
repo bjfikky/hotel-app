@@ -78,7 +78,9 @@ class TemporaryDrawer extends Component {
     
 
     render() {
-        
+
+
+        // SIDEBAR GUESTS MENU ITEMS
         const guestMenuList = (
             <Collapse in={this.state.guestOpen} timeout="auto" unmountOnExit>
                 <List style={styles.subMenu}>
@@ -112,7 +114,9 @@ class TemporaryDrawer extends Component {
                 </List>
             </Collapse>
         );
-    
+
+
+        // SIDEBAR ROOMS MENU ITEMS
         const roomMenuList = (
             <Collapse in={this.state.roomOpen} timeout="auto" unmountOnExit>
                 <List style={styles.subMenu}>
@@ -144,33 +148,38 @@ class TemporaryDrawer extends Component {
                         </ListItem>
                     </Link>
 
-                
-                    <ListItem button onClick={this.toggleDrawer(false)}>
-                        <ListItemIcon>
-                            <Two />
-                        </ListItemIcon>
-                        <ListItemText inset primary="Doubles" />
-                    </ListItem>
-    
-                    <ListItem button onClick={this.toggleDrawer(false)}>
-                        <ListItemIcon>
-                            <Star />
-                        </ListItemIcon>
-                        <ListItemText inset primary="Suites" />
-                    </ListItem>
-    
-                    <ListItem button onClick={this.toggleDrawer(false)}>
-                        <ListItemIcon>
-                            <Home />
-                        </ListItemIcon>
-                        <ListItemText inset primary="Bungalows" />
-                    </ListItem>
+                    <Link to="/Rooms/Doubles" style={{textDecoration: "none"}}>
+                        <ListItem button onClick={this.toggleDrawer(false)}>
+                            <ListItemIcon>
+                                <Two />
+                            </ListItemIcon>
+                            <ListItemText inset primary="Doubles" />
+                        </ListItem>
+                    </Link>
+
+                    <Link to="/Rooms/Suites" style={{textDecoration: "none"}}>
+                        <ListItem button onClick={this.toggleDrawer(false)}>
+                            <ListItemIcon>
+                                <Star />
+                            </ListItemIcon>
+                            <ListItemText inset primary="Suites" />
+                        </ListItem>
+                    </Link>
+
+                    <Link to="/Rooms/Bungalows" style={{textDecoration: "none"}}>
+                        <ListItem button onClick={this.toggleDrawer(false)}>
+                            <ListItemIcon>
+                                <Home />
+                            </ListItemIcon>
+                            <ListItemText inset primary="Bungalows" />
+                        </ListItem>
+                    </Link>
                 </List>
             </Collapse>
         );
         
         
-        
+        // SIDEBAR MENU
         const sideList = (
             <List component="nav" style={styles.list} subheader={<ListSubheader component="div">App Menu</ListSubheader>}>
                 <Link to="/" style={{textDecoration: 'none'}}>
