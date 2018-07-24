@@ -1,5 +1,3 @@
-//TODO: Create empty rooms table here
-
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
