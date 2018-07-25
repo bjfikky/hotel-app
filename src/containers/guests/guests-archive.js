@@ -1,3 +1,5 @@
+//TODO: Add the table for old guests
+
 
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
@@ -11,9 +13,9 @@ import TableRow from '@material-ui/core/TableRow';
 
 
 
-class GuestsList extends Component {
+class GuestsArchive extends Component {
 
-    //TODO: Add search bar to guest list table
+    //TODO: Add search bar to old guest list table
 
     id = 0;
 
@@ -23,20 +25,20 @@ class GuestsList extends Component {
     }
 
     data = [
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
+        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
+        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
+        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
+        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
+        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
+        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
+        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
+        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
+        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
+        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
+        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
+        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
+        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
+        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
     ];
 
 
@@ -45,7 +47,7 @@ class GuestsList extends Component {
 
         return (
             <Paper style={{padding: '20px'}}>
-                <h3>Current Guests</h3>
+                <h3>Guests Archive</h3>
 
                 <Table >
                     <TableHead>
@@ -93,4 +95,4 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-)(GuestsList);
+)(GuestsArchive);

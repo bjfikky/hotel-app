@@ -90,20 +90,24 @@ class TemporaryDrawer extends Component {
                         </ListItemIcon>
                         <ListItemText inset primary="Add Guest" />
                     </ListItem>
-    
-                    <ListItem button onClick={this.toggleDrawer(false)}>
-                        <ListItemIcon>
-                            <FormatListBulleted />
-                        </ListItemIcon>
-                        <ListItemText inset primary="Guests List" />
-                    </ListItem>
-    
-                    <ListItem button onClick={this.toggleDrawer(false)}>
-                        <ListItemIcon>
-                            <Archive />
-                        </ListItemIcon>
-                        <ListItemText inset primary="Past Guests" />
-                    </ListItem>
+
+                    <Link to="/Guests/All" style={{textDecoration: "none"}}>
+                        <ListItem button onClick={this.toggleDrawer(false)}>
+                            <ListItemIcon>
+                                <FormatListBulleted />
+                            </ListItemIcon>
+                            <ListItemText inset primary="Guests List" />
+                        </ListItem>
+                    </Link>
+
+                    <Link to="/Guests/Archive" style={{textDecoration: "none"}}>
+                        <ListItem button onClick={this.toggleDrawer(false)}>
+                            <ListItemIcon>
+                                <Archive />
+                            </ListItemIcon>
+                            <ListItemText inset primary="Past Guests" />
+                        </ListItem>
+                    </Link>
     
                     <ListItem button onClick={this.toggleDrawer(false)}>
                         <ListItemIcon>

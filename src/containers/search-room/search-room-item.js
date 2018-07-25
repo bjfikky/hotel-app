@@ -26,7 +26,7 @@ const roomItem = () => {
                 
                 <Grid item md={2}>
                     <h5 style={{color: 'green'}}>$165.00</h5>
-                    Test
+                    Reserve Button
                 </Grid>
                 
                

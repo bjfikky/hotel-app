@@ -13,6 +13,9 @@ import BungalowRooms from './containers/rooms/rooms-bungalows';
 import OccupiedRooms from './containers/rooms/rooms-occupied';
 import EmptyRooms from './containers/rooms/rooms-empty';
 
+import GuestsList from './containers/guests/guests-list';
+import GuestsArchive from './containers/guests/guests-archive';
+
 import './App.css';
 
 
@@ -47,6 +50,8 @@ class App extends Component {
                             <Route exact path="/Rooms/Bungalows" component={BungalowRooms}/>
                             <Route exact path="/Rooms/Occupied" component={OccupiedRooms}/>
                             <Route exact path="/Rooms/Empty" component={EmptyRooms}/>
+                            <Route exact path="/Guests/All" component={GuestsList}/>
+                            <Route exact path="/Guests/Archive" component={GuestsArchive}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </div>
