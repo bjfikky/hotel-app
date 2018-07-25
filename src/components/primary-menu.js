@@ -58,6 +58,7 @@ const styles = {
 class TemporaryDrawer extends Component {
     state = {
         left: false,
+        reservationOpen: true,
         guestOpen: true,
         roomOpen: false
     };
@@ -67,6 +68,10 @@ class TemporaryDrawer extends Component {
             left: open,
         });
     };
+
+    handleReservationsMenuClick = () => {
+        this.setState(state => ({ reservationOpen: !state.reservationOpen }));
+    }
     
     handleGuestsMenuClick = () => {
         this.setState(state => ({ guestOpen: !state.guestOpen }));
@@ -79,18 +84,37 @@ class TemporaryDrawer extends Component {
 
     render() {
 
+        // SIDEBAR RESERVATIONS MENU ITEMS
+        const reservationMenuList = (
+            <Collapse in={this.state.guestOpen} timeout="auto" unmountOnExit>
+                <List style={styles.subMenu}>
+                    <Link to="/Reservation/Search" style={{textDecoration: "none"}}>
+                        <ListItem button onClick={this.toggleDrawer(false)}>
+                            <ListItemIcon>
+                                <PersonAdd />
+                            </ListItemIcon>
+                            <ListItemText inset primary="Reservation" />
+                        </ListItem>
+                    </Link>
+
+                    <Link to="/Reservations/All" style={{textDecoration: "none"}}>
+                        <ListItem button onClick={this.toggleDrawer(false)}>
+                            <ListItemIcon>
+                                <FormatListBulleted />
+                            </ListItemIcon>
+                            <ListItemText inset primary="Reservations List" />
+                        </ListItem>
+                    </Link>
+                </List>
+            </Collapse>
+        );
+
+
 
         // SIDEBAR GUESTS MENU ITEMS
         const guestMenuList = (
             <Collapse in={this.state.guestOpen} timeout="auto" unmountOnExit>
                 <List style={styles.subMenu}>
-                    <ListItem button onClick={this.toggleDrawer(false)}>
-                        <ListItemIcon>
-                            <PersonAdd />
-                        </ListItemIcon>
-                        <ListItemText inset primary="Add Guest" />
-                    </ListItem>
-
                     <Link to="/Guests/All" style={{textDecoration: "none"}}>
                         <ListItem button onClick={this.toggleDrawer(false)}>
                             <ListItemIcon>
@@ -108,13 +132,6 @@ class TemporaryDrawer extends Component {
                             <ListItemText inset primary="Past Guests" />
                         </ListItem>
                     </Link>
-    
-                    <ListItem button onClick={this.toggleDrawer(false)}>
-                        <ListItemIcon>
-                            <Search />
-                        </ListItemIcon>
-                        <ListItemText inset primary="Search" />
-                    </ListItem>
                 </List>
             </Collapse>
         );
@@ -194,6 +211,17 @@ class TemporaryDrawer extends Component {
                         <ListItemText primary="Dashboard" />
                     </ListItem>
                 </Link>
+
+                <ListItem button onClick={this.handleGuestsMenuClick}>
+                    <ListItemIcon>
+                        <PeopleIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Reservations" />
+                    {this.state.guestOpen ? <ExpandLess /> : <ExpandMore />}
+                </ListItem>
+
+                {reservationMenuList}
+
                 
                 <ListItem button onClick={this.handleGuestsMenuClick}>
                     <ListItemIcon>
@@ -204,7 +232,8 @@ class TemporaryDrawer extends Component {
                 </ListItem>
                 
                 {guestMenuList}
-                
+
+
                 <ListItem button onClick={this.handleRoomsMenuClick}>
                     <ListItemIcon>
                         <HomeIcon />
@@ -214,7 +243,8 @@ class TemporaryDrawer extends Component {
                 </ListItem>
                 
                 {roomMenuList}
-                
+
+
                 <Divider/>
     
                 <ListItem button>

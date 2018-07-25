@@ -20,7 +20,7 @@ const style = {
 let moreOptions = "more options";
 
 
-class Reservation extends Component {
+class ReservationSearchForm extends Component {
     constructor(props) {
         super(props);
     
@@ -145,10 +145,25 @@ class Reservation extends Component {
     }
 }
 
+ReservationSearchForm.defaultProps = {
+    style: {
+        paper: {
+            padding: '10px 10px 10px 10px',
+            margin: '10px',
+            height: '',
+            overflowX: 'auto',    //allows horizontal scrolling on table
+        },
+        paperTitle: {
+            margin: '0px',
+            color: '#4a4949'
+        }
+    }
+}
+
 function mapStateToProps(state) {
     return {};
 }
 
 export default connect(
     mapStateToProps,
-)(Reservation);
+)(ReservationSearchForm);

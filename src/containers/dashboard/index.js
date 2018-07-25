@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 
-import Reservation from './reservation';
+import Reservation from '../reservations/reservation-search-form';
 import Guests from './guests';
 import Rooms from './rooms';
 
