@@ -18,6 +18,7 @@ import GuestsArchive from './containers/guests/guests-archive';
 
 import Reservation from './containers/reservations/reservation-search-form';
 import ReservationsList from './containers/reservations/reservations-list';
+import ReservationGuestForm from './containers/reservations/reservation-guest-form';
 
 import './App.css';
 
@@ -47,6 +48,7 @@ class App extends Component {
                         <Switch>
                             <Route exact path="/" component={Dashboard}/>
                             <Route exact path="/Reservation/Search" component={Reservation}/>
+                            <Route exact path="/Reservation/ReservationForm" component={ReservationGuestForm}/>
                             <Route exact path="/Reservations/All" component={ReservationsList}/>
                             <Route exact path="/Search/Rooms" component={RoomsList}/>
                             <Route exact path="/Rooms/Singles" component={SingleRooms}/>

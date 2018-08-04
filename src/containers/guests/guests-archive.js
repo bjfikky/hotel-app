@@ -1,6 +1,3 @@
-//TODO: Add the table for old guests
-
-
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 

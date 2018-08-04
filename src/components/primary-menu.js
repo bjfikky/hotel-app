@@ -55,7 +55,7 @@ const styles = {
     },
 };
 
-class TemporaryDrawer extends Component {
+class MenuDrawer extends Component {
     state = {
         left: false,
         reservationOpen: true,
@@ -86,7 +86,7 @@ class TemporaryDrawer extends Component {
 
         // SIDEBAR RESERVATIONS MENU ITEMS
         const reservationMenuList = (
-            <Collapse in={this.state.guestOpen} timeout="auto" unmountOnExit>
+            <Collapse in={this.state.reservationOpen} timeout="auto" unmountOnExit>
                 <List style={styles.subMenu}>
                     <Link to="/Reservation/Search" style={{textDecoration: "none"}}>
                         <ListItem button onClick={this.toggleDrawer(false)}>
@@ -212,12 +212,12 @@ class TemporaryDrawer extends Component {
                     </ListItem>
                 </Link>
 
-                <ListItem button onClick={this.handleGuestsMenuClick}>
+                <ListItem button onClick={this.handleReservationsMenuClick}>
                     <ListItemIcon>
                         <PeopleIcon />
                     </ListItemIcon>
                     <ListItemText primary="Reservations" />
-                    {this.state.guestOpen ? <ExpandLess /> : <ExpandMore />}
+                    {this.state.reservationOpen ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
 
                 {reservationMenuList}
@@ -295,4 +295,4 @@ class TemporaryDrawer extends Component {
 }
 
 
-export default TemporaryDrawer;
+export default MenuDrawer;

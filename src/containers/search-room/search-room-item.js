@@ -1,9 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 const roomItem = () => {
+    //TODO: Reserve button link to the correct route
     return (
         <Paper style={{padding: '10px', margin: '30px 0px'}}>
             <Grid container>
@@ -26,7 +29,11 @@ const roomItem = () => {
                 
                 <Grid item md={2}>
                     <h5 style={{color: 'green'}}>$165.00</h5>
-                    Reserve Button
+                    <Link to="/Reservation/ReservationForm" style={{textDecoration: 'none'}}>
+                        <Button variant="contained" color="primary">
+                            Reserve
+                        </Button>
+                    </Link>
                 </Grid>
                 
                
