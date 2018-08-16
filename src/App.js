@@ -16,7 +16,8 @@ import EmptyRooms from './containers/rooms/rooms-empty';
 import GuestsList from './containers/guests/guests-list';
 import GuestsArchive from './containers/guests/guests-archive';
 
-import Reservation from './containers/reservations/reservation-search-form';
+import Reservation from './containers/reservations/reservation';
+import ReservationSearchForm from './containers/reservations/reservation-search-form';
 import ReservationsList from './containers/reservations/reservations-list';
 import ReservationGuestForm from './containers/reservations/reservation-guest-form';
 
@@ -47,7 +48,8 @@ class App extends Component {
                     <div className="App">
                         <Switch>
                             <Route exact path="/" component={Dashboard}/>
-                            <Route exact path="/Reservation/Search" component={Reservation}/>
+                            <Route exact path="/Reservation" component={Reservation}/>
+                            <Route exact path="/Reservation/Search" component={ReservationSearchForm}/>
                             <Route exact path="/Reservation/ReservationForm" component={ReservationGuestForm}/>
                             <Route exact path="/Reservations/All" component={ReservationsList}/>
                             <Route exact path="/Search/Rooms" component={RoomsList}/>

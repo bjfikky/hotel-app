@@ -12,7 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 
 class DoubleRooms extends Component {
 
-    //TODO: Add Reservation Dates
+    //TODO: Add ReservationSearchForm Dates
 
     id = 0;
 

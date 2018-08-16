@@ -41,8 +41,6 @@ class GuestsList extends Component {
 
 
     render() {
-        let statusColor = '';
-
         return (
             <Paper style={{padding: '20px'}}>
                 <h3>Current Guests</h3>
@@ -58,13 +56,6 @@ class GuestsList extends Component {
                     </TableHead>
                     <TableBody>
                         {this.data.map(n => {
-
-                            if (n.status === 'empty') {
-                                statusColor = 'green'
-                            } else {
-                                statusColor = 'red'
-                            }
-
                             return (
                                 <TableRow key={n.id}>
                                     <TableCell component="th" scope="row">

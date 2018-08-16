@@ -25,7 +25,6 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import PersonAdd from '@material-ui/icons/PersonAdd';
 import FormatListBulleted from '@material-ui/icons/FormatListBulleted';
 import Archive from '@material-ui/icons/Archive';
-import Search from '@material-ui/icons/Search';
 import RemoveCircle from '@material-ui/icons/RemoveCircle';
 import AddCircle from '@material-ui/icons/AddCircleOutline';
 import One from '@material-ui/icons/LooksOne';

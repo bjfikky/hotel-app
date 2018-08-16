@@ -40,8 +40,6 @@ class GuestsArchive extends Component {
 
 
     render() {
-        let statusColor = '';
-
         return (
             <Paper style={{padding: '20px'}}>
                 <h3>Guests Archive</h3>
@@ -57,12 +55,6 @@ class GuestsArchive extends Component {
                     </TableHead>
                     <TableBody>
                         {this.data.map(n => {
-
-                            if (n.status === 'empty') {
-                                statusColor = 'green'
-                            } else {
-                                statusColor = 'red'
-                            }
 
                             return (
                                 <TableRow key={n.id}>

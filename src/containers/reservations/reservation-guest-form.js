@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
@@ -123,9 +124,11 @@ class ReservationGuestForm extends Component {
                                 </div>
                             </Paper>
                             <div style={{marginLeft: '35%'}}>
-                                <Button variant="contained" color="primary">
-                                    Book Reservation
-                                </Button>
+                                <Link to="/Reservation" style={{textDecoration: "none"}}>
+                                    <Button variant="contained" color="primary">
+                                        Book Reservation
+                                    </Button>
+                                </Link>
                             </div>
                         </Grid>
                     </Grid>
