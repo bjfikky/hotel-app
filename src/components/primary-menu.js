@@ -92,7 +92,7 @@ class MenuDrawer extends Component {
                             <ListItemIcon>
                                 <PersonAdd />
                             </ListItemIcon>
-                            <ListItemText inset primary="Reservation" />
+                            <ListItemText inset primary="Reserve" />
                         </ListItem>
                     </Link>
 

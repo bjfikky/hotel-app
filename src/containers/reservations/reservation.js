@@ -12,55 +12,52 @@ class Reservation extends Component {
             <div>
                 <h2>Reservation</h2>
                 <Grid container>
-                    <Grid item md={6}>
+                    <Grid item md={12}>
                         <Paper style={{ padding: 20, margin: 20}}>
-                            <h5>Reservation Details</h5>
+                            <h4>Reservation Details</h4>
                             <div>
+                                <p style={{color: '#3f51b5'}}>Reservation Number: 164847364748 </p>
                                 <p style={{color: '#3f51b5'}}>Room: 101 Single </p>
                                 <p style={{color: '#3f51b5'}}>Date: 05/20/2018 - 05/24/2018 <em>*(4 nights)</em></p>
+                                <p style={{color: '#3f51b5'}}>No. of Occupants: 3 </p>
                             </div>
 
-                            <h5>Guest Information</h5>
-                            <div style={{marginBottom:30, display: 'flex'}}>
-                                <h6>Name:</h6>
-                                <p>Benjamin Orimoloye</p>
-                            </div>
+                            <hr/>
 
-                            <div style={{marginBottom:30, display: 'flex'}}>
-                                <h6>Phone Number:</h6>
-                                <p>2404748710</p>
-                            </div>
+                            <h4>Guest Information</h4>
+                            <Grid container>
+                                <Grid item md={4}>
+                                    <div>
+                                        <h6>Name:</h6>
+                                        <p>Benjamin Orimoloye</p>
+                                    </div>
 
-                            <div style={{marginBottom:30, display: 'flex'}}>
+                                    <div>
+                                        <h6>Phone Number:</h6>
+                                        <p>2404748710</p>
+                                    </div>
+                                </Grid>
 
-                            </div>
+                                <Grid item md={8}>
+                                    <div>
+                                        <h6>Email Address:</h6>
+                                        <p>bjfikky@yahoo.com</p>
+                                    </div>
 
-                            <div style={{marginBottom:30, display: 'flex'}}>
+                                    <div>
+                                        <h6>Address:</h6>
+                                        <p>Goucher Road, Towson - MD 21204</p>
+                                    </div>
+                                </Grid>
 
-                            </div>
+                            </Grid>
                         </Paper>
-                    </Grid>
-
-                    <Grid item md={6}>
-                        <Paper style={{ padding: 20, margin: 20}}>
-                            <h5>Payment Information</h5>
-                            <div style={{marginBottom:30, display: 'flex'}}>
-
-                            </div>
-
-                            <div style={{marginBottom:30, display: 'flex'}}>
-
-                            </div>
-                        </Paper>
-                        <div style={{marginLeft: '35%'}}>
-
-                                <Button variant="contained" color="primary">
-                                    Book Reservation
-                                </Button>
-
-                        </div>
                     </Grid>
                 </Grid>
+
+                <Button variant="contained" color="primary">
+                    Check In Guest
+                </Button>
             </div>
         );
     }
