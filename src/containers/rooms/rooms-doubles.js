@@ -12,24 +12,6 @@ import TableRow from '@material-ui/core/TableRow';
 
 class DoubleRooms extends Component {
 
-    //TODO: Add ReservationSearchForm Dates
-
-    id = 0;
-
-    createData = (roomName, status, reservation) => {
-        let id = this.id += 1;
-        return { id, roomName, status, reservation};
-    }
-
-    data = [
-        this.createData('101 Double', 'empty', 26),
-        this.createData('103 Double', 'empty', 8),
-        this.createData('105 Double', 'occupied', 11),
-        this.createData('107 Double', 'empty', 5),
-        this.createData('109 Double', 'occupied', 2),
-    ];
-
-
     render() {
         let statusColor = '';
 
@@ -46,26 +28,31 @@ class DoubleRooms extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.data.map(n => {
+                        {
+                            this.props.rooms.map(n => {
 
-                            if (n.status === 'empty') {
-                                statusColor = 'green'
-                            } else {
-                                statusColor = 'red'
-                            }
+//CHECK IF THE ROOM TYPE IS DOUBLE
+                                if (n.type === 'double') {
+                                    if (n.empty) {
+                                        statusColor = 'green'
+                                    } else {
+                                        statusColor = 'red'
+                                    }
 
-                            return (
-                                <TableRow key={n.id}>
-                                    <TableCell component="th" scope="row">
-                                        <strong>{n.roomName}</strong>
-                                    </TableCell>
+                                    return (
+                                        <TableRow key={n.id}>
+                                            <TableCell component="th" scope="row">
+                                                <strong>{n.name}</strong>
+                                            </TableCell>
 
-                                    <TableCell style={{color: statusColor }}  >{n.status}</TableCell>
+                                            <TableCell style={{color: statusColor }}  >{n.empty ? 'empty' : 'occupied'}</TableCell>
 
-                                    <TableCell>{n.reservation}</TableCell>
-                                </TableRow>
-                            );
-                        })}
+                                            <TableCell>{n.reservation}</TableCell>
+                                        </TableRow>
+                                    )
+                                }
+                            })
+                        }
                     </TableBody>
                 </Table>
             </Paper>
@@ -75,7 +62,9 @@ class DoubleRooms extends Component {
 }
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        rooms: state.rooms
+    };
 }
 
 export default connect(

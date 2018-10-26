@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+import {getRooms} from "../../actions/actions_rooms";
+
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,14 +13,17 @@ import TableRow from '@material-ui/core/TableRow';
 
 
 class SingleRooms extends Component {
+    componentWillMount() {
+        this.props.getRooms()
+    }
 
     render() {
         let statusColor = '';
-        
+
         return (
                 <Paper style={{padding: '20px'}}>
                     <h3>Single Rooms</h3>
-                    
+
                     <Table >
                         <TableHead>
                             <TableRow>
@@ -56,7 +61,7 @@ class SingleRooms extends Component {
                         </TableBody>
                     </Table>
                 </Paper>
-           
+
         );
     }
 }
@@ -69,4 +74,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
+    {getRooms}
 )(SingleRooms);
