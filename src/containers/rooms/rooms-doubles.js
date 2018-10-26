@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+import {getRooms} from "../../actions/actions_rooms";
+
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,6 +13,9 @@ import TableRow from '@material-ui/core/TableRow';
 
 
 class DoubleRooms extends Component {
+    componentWillMount() {
+        this.props.getRooms()
+    }
 
     render() {
         let statusColor = '';
@@ -69,4 +74,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
+    {getRooms}
 )(DoubleRooms);

@@ -6,6 +6,8 @@ const rooms = (state = [], action) => {
         case 'FETCH_ROOMS':
             let allRooms = [];
 
+            state = []
+
             action.payload.forEach(room => {
                 allRooms.push({
                     id: room.id,
