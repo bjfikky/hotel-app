@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import {getAvailableRooms} from "../../actions/actions_rooms";
+
 
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -36,7 +38,7 @@ class ReservationSearchForm extends Component {
                 <Paper style={this.props.style.paper}>
                     <h3 style={this.props.style.paperTitle}>Reservation</h3>
     
-                    <form >
+                    <form onSubmit={this.handleSearchFormSubmit}>
                         <Grid container>
                             <Grid item sm style={style.date}>
                                 <TextField
@@ -81,11 +83,9 @@ class ReservationSearchForm extends Component {
                         }
                         
                         <div style={{padding: '10px 5px'}}>
-                            <Link to="/Search/Rooms" style={{textDecoration: 'none'}}>
-                                <Button variant="contained" color="primary">
-                                    Search
-                                </Button>
-                            </Link>
+                            <Button type="submit" variant="contained" color="primary">
+                                Search
+                            </Button>
                         </div>
                         
                     </form>
@@ -143,6 +143,11 @@ class ReservationSearchForm extends Component {
             moreOptions: !this.state.moreOptions,
         });
     }
+
+    handleSearchFormSubmit = (event) => {
+        event.preventDefault()
+        this.props.getAvailableRooms()
+    }
 }
 
 ReservationSearchForm.defaultProps = {
@@ -166,4 +171,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
+    {getAvailableRooms}
 )(ReservationSearchForm);

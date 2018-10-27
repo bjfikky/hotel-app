@@ -1,7 +1,6 @@
 import firebase from '../config/firebaseConfig'
 
 export const getRooms = () => {
-    console.log("action performed")
 
     let roomsQuery = firebase.firestore().collection("rooms").orderBy("name").get()
 
@@ -12,5 +11,13 @@ export const getRooms = () => {
                 payload: data
             })
         })
+    }
+}
+
+export const getAvailableRooms = (checkin, checkout) => {
+    console.log("searching available rooms", checkin , checkout)
+
+    return (dispatch) => {
+
     }
 }

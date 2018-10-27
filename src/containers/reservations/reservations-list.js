@@ -2,6 +2,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+import {getReservations} from "../../actions/actions_reservations";
+
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -13,31 +15,11 @@ import TableRow from '@material-ui/core/TableRow';
 
 class ReservationsList extends Component {
 
-    //TODO: Add search bar to guest list table
-
-    id = 0;
-
-    createData = (guestName, roomName, reserveNum, checkin, checkout) => {
-        let id = this.id += 1;
-        return { id, guestName, roomName, reserveNum, checkin, checkout};
+    componentWillMount() {
+        this.props.getReservations()
     }
 
-    data = [
-        this.createData('Benjamin Orimoloye', '104 Suite', '73678376362', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '73678376362', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '73678376362', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '73678376362', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '73678376362', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '73678376362', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '73678376362', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '73678376362', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '73678376362', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '73678376362', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '73678376362', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '73678376362', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '73678376362', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '73678376362', '09/12/2018', '09/16/2018'),
-    ];
+    //TODO: Add search bar to guest list table
 
 
     render() {
@@ -57,7 +39,7 @@ class ReservationsList extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.data.map(n => {
+                        {this.props.reservations.map(n => {
 
                             return (
                                 <TableRow key={n.id}>
@@ -84,9 +66,12 @@ class ReservationsList extends Component {
 }
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        reservations: state.reservations
+    };
 }
 
 export default connect(
     mapStateToProps,
+    {getReservations}
 )(ReservationsList);
