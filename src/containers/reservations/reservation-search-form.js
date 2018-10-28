@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
+import * as moment from 'moment';
 
 import {getAvailableRooms} from "../../actions/actions_rooms";
 
@@ -28,8 +29,13 @@ class ReservationSearchForm extends Component {
     
         this.state = {
             moreOptions: false,
+
+            checkin: this.getTodaysDate(),
+            checkout: this.getTodaysDate(1)
+
         }
     }
+
     
     //TODO: Use date formatter package to set the checkin date to today's date
     render() {
@@ -44,11 +50,14 @@ class ReservationSearchForm extends Component {
                                 <TextField
                                     id="date"
                                     label="Check In"
+                                    name="checkin"
                                     type="date"
-                                    defaultValue="2017-05-24"
+                                    // defaultValue="2017-05-24"
+                                    value={this.state.checkin}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    onChange={this.handleInputChange}
                                 />
                             </Grid>
     
@@ -56,11 +65,13 @@ class ReservationSearchForm extends Component {
                                 <TextField
                                     id="date"
                                     label="Check Out"
+                                    name="checkout"
                                     type="date"
-                                    defaultValue="2017-05-24"
+                                    value={this.state.checkout}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    onChange={this.handleInputChange}
                                 />
                             </Grid>
                         </Grid>
@@ -130,6 +141,11 @@ class ReservationSearchForm extends Component {
             </Grid>
         );
     }
+
+    getTodaysDate = (days = 0) => {
+        let date = moment(Date.now(), 'x').add(days, 'days')
+        return date.format('YYYY-MM-DD')
+    }
     
     handleMoreOptions = (event) => {
         event.preventDefault();
@@ -144,11 +160,19 @@ class ReservationSearchForm extends Component {
         });
     }
 
+    handleInputChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
     handleSearchFormSubmit = (event) => {
         event.preventDefault()
-        this.props.getAvailableRooms()
+        console.log(this.state.checkin, this.state.checkout)
+        this.props.getAvailableRooms(this.state.checkin, this.state.checkout)
     }
 }
+
 
 ReservationSearchForm.defaultProps = {
     style: {
