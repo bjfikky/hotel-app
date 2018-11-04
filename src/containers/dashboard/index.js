@@ -40,7 +40,7 @@ class Dashboard extends Component {
                 </Typography>
     
                 <Grid container>
-                    <Reservation style={style}/>
+                    <Reservation style={style} history={this.props.history}/>
                     
                     <Guests style={style}/>
                     

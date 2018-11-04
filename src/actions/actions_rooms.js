@@ -7,17 +7,35 @@ export const getRooms = () => {
     return (dispatch) => {
         roomsQuery.then((data) => {
             dispatch({
-                type: 'FETCH_ROOMS',
+                type: 'GET_ROOMS',
                 payload: data
             })
         })
     }
 }
 
-export const getAvailableRooms = (checkin, checkout) => {
-    console.log("searching available rooms", checkin , checkout)
+export const getAvailableRooms = (checkin, checkout, callback) => {
+// TODO: Make reservation query use dates passed in
+    let reservationQuery = firebase.firestore().collection("reservations").get()
+    let roomsQuery = firebase.firestore().collection("rooms").orderBy("name").get()
+
+
+
 
     return (dispatch) => {
+        reservationQuery.then(reservations => {
+            roomsQuery.then(rooms => {
+                dispatch({
+                    type: 'GET_AVAILABLE_ROOMS',
+                    payload: {
+                        reservations: reservations,
+                        rooms: rooms
+                    }
+                })
+                console.log("searching available rooms", checkin , checkout)
+                callback()
+            })
+        })
 
     }
 }

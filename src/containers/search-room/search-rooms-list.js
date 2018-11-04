@@ -1,21 +1,37 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import RoomItem from './search-room-item';
 import RoomFilters from './search-room-filter';
+import {connect} from "react-redux";
 
 
-const Rooms = () => {
-    return (
-        <div>
-            <RoomFilters/>
-           
-            
-            <RoomItem/>
-            <RoomItem/>
-            <RoomItem/>
-            <RoomItem/>
-        </div>
-    );
-};
+class Rooms extends Component {
+    render() {
 
-export default Rooms;
+        return (
+            <div>
+
+                <RoomFilters/>
+
+                {
+                    this.props.rooms.map(room => {
+                        return (
+                            <RoomItem room={room} key={room.id}/>
+                        )
+                    })
+                }
+
+            </div>
+        )
+    }
+}
+
+function mapStateToProps(state) {
+    return {
+        rooms: state.rooms
+    };
+}
+
+export default connect(
+    mapStateToProps,
+)(Rooms);

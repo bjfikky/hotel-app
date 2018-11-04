@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
-const roomItem = () => {
+const roomItem = (props) => {
     //TODO: Reserve button link to the correct route
     return (
         <Paper style={{padding: '10px', margin: '30px 0px'}}>
@@ -15,7 +15,7 @@ const roomItem = () => {
                 </Grid>
                 
                 <Grid item md={8}>
-                    <h4>Room Name</h4>
+                    <h4>{props.room.type} {props.room.name}</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus assumenda consequatur culpa
                         deserunt dolorum error eveniet exercitationem fugit harum iste laborum maxime minus natus,
                         nemo quam, repudiandae sint tenetur ullam.</p>
