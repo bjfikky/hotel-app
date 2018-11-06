@@ -9,6 +9,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 
 class ReservationGuestForm extends Component {
+    constructor(props) {
+        super(props)
+    }
 
     //TODO: Add form for making reservation and payment
     render() {
@@ -33,8 +36,8 @@ class ReservationGuestForm extends Component {
                             <Paper style={{ padding: 20, margin: 20}}>
                                 <h5>Reservation Details</h5>
                                 <div>
-                                    <p style={{color: '#3f51b5'}}>Room: 101 Single </p>
-                                    <p style={{color: '#3f51b5'}}>Date: 05/20/2018 - 05/24/2018 <em>*(4 nights)</em></p>
+                                    <p style={{color: '#3f51b5'}}>Room: {this.props.location.state.room} </p>
+                                    <p style={{color: '#3f51b5'}}>Date: 05/20/2018 -  <em>*(4 nights)</em></p>
                                 </div>
 
                                 <h5>Guest Information</h5>

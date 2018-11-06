@@ -13,7 +13,8 @@ const rooms = (state = [], action) => {
                     id: room.id,
                     name: room.data().name,
                     type: room.data().type,
-                    empty: room.data().empty
+                    empty: room.data().empty,
+                    price: room.data().price,
                 })
             })
 
@@ -32,7 +33,9 @@ const rooms = (state = [], action) => {
                         availableRooms.push({
                             id: room.id,
                             name: room.data().name,
-                            type: room.data().type
+                            type: room.data().type,
+                            empty: room.data().empty,
+                            price: room.data().price,
                         })
                     }
                 })
