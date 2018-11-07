@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import moment from 'moment'
+
+import countryList from '../../listof'
 
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
@@ -12,12 +15,12 @@ class ReservationGuestForm extends Component {
     constructor(props) {
         super(props)
     }
+    //moment(this.props.location.state.checkin, 'YYYY-MM-DD').format('LL')
 
-    //TODO: Add form for making reservation and payment
     render() {
-        let countries = ['Nigeria', 'USA', 'Canada'];
+        let countries = countryList
         const cards = ['VISA', 'MasterCard', 'Discover', 'American Express', 'Carte Blanche', 'JCB (Japanese)'];
-        const months = ['01 - January', '02 - February', '03 - March', '04 - April', '05 - May'];
+        const months = ['01 - January', '02 - February', '03 - March', '04 - April', '05 - May', '06 - June', '07 - July', '08 - August', '09 - September', '10 - October', '11 - November', '12 - December'];
         const years = (currentYear) => {
             let years = [currentYear];
             for(let i = 0; i < 10; i++) {
@@ -37,7 +40,8 @@ class ReservationGuestForm extends Component {
                                 <h5>Reservation Details</h5>
                                 <div>
                                     <p style={{color: '#3f51b5'}}>Room: {this.props.location.state.room} </p>
-                                    <p style={{color: '#3f51b5'}}>Date: 05/20/2018 -  <em>*(4 nights)</em></p>
+
+                                    <p style={{color: '#3f51b5'}}>Date: {this.props.location.state.checkin} - {this.props.location.state.checkout} <em>*(<strong>{this.numberOfNights()}</strong> nights)</em></p>
                                 </div>
 
                                 <h5>Guest Information</h5>
@@ -138,6 +142,12 @@ class ReservationGuestForm extends Component {
                 </form>
             </div>
         );
+    }
+
+    numberOfNights = () => {
+        let from = moment(this.props.location.state.checkin, 'MM/DD/YYYY')
+        let to = moment(this.props.location.state.checkout, 'MM/DD/YYYY')
+        return to.diff(from, 'days')
     }
 }
 

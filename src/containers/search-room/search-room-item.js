@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment'
 
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -54,8 +55,8 @@ class roomItem extends Component {
         this.props.history.push({
             pathname: "/Reservation/ReservationForm",
             state: {
-                checkin: this.props.checkin,
-                checkout: this.props.checkout,
+                checkin: moment(this.props.checkin, 'YYYY-MM-DD').format('L'),
+                checkout: moment(this.props.checkout, 'YYYY-MM-DD').format('L'),
                 room: this.props.room.name
             }
         })

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca1e350d-5a50-4d72-a370-1430d6a1a01e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/listof/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/reservations/reservation-guest-form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/reservations/reservation-guest-form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/search-room/search-room-item.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/search-room/search-room-item.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,18 +26,6 @@
               <caret line="42" column="75" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="75" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="rooms-singles.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/rooms/rooms-singles.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="68" selection-start-line="68" selection-end-line="72" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,8 +66,8 @@
       <file leaf-file-name="search-room-item.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/search-room/search-room-item.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="851">
-              <caret line="58" column="42" lean-forward="true" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+            <state relative-caret-position="838">
+              <caret line="58" column="52" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="52" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -85,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reservation-guest-form.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="reservation-guest-form.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/containers/reservations/reservation-guest-form.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="39" column="85" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="85" />
+            <state relative-caret-position="480">
+              <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -97,7 +87,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/listof/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="100" selection-start-line="10" selection-start-column="100" selection-end-line="10" selection-end-column="100" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
@@ -140,7 +139,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/components/BottomNavigation.js" />
         <option value="$PROJECT_DIR$/src/components/bottom-navigation.js" />
         <option value="$PROJECT_DIR$/src/components/menu.js" />
@@ -188,9 +186,10 @@
         <option value="$PROJECT_DIR$/src/reducers/reducer_rooms.js" />
         <option value="$PROJECT_DIR$/src/containers/reservations/reservation-search-form.js" />
         <option value="$PROJECT_DIR$/src/containers/search-room/search-rooms-list.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/listof/index.js" />
         <option value="$PROJECT_DIR$/src/containers/search-room/search-room-item.js" />
         <option value="$PROJECT_DIR$/src/containers/reservations/reservation-guest-form.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -248,59 +247,7 @@
               <item name="hotel-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="hotel-app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="actions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotel-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotel-app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotel-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotel-app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotel-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotel-app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotel-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotel-app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotel-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotel-app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="reservations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotel-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotel-app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="rooms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotel-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotel-app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="search-room" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotel-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotel-app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="reducers" type="462c0819:PsiDirectoryNode" />
+              <item name="listof" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -366,12 +313,12 @@
       <workItem from="1534890405592" duration="1503000" />
       <workItem from="1538952598031" duration="13000" />
       <workItem from="1539470650409" duration="5682000" />
-      <workItem from="1540255796560" duration="35047000" />
+      <workItem from="1540255796560" duration="39207000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141535000" />
+    <option name="totallyTimeSpent" value="145695000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -387,14 +334,15 @@
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13650794" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.12609737" />
+      <window_info anchor="bottom" id="TODO" order="6" visible="true" weight="0.12609737" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32960895" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32960895" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.17717478" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.17717478" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TypeScript" order="8" />
@@ -404,7 +352,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32960895" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -440,9 +387,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/actions/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -746,13 +690,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/search-room/search-room-item.js">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="851">
-          <caret line="58" column="42" lean-forward="true" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="405">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/listof/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="100" selection-start-line="10" selection-start-column="100" selection-end-line="10" selection-end-column="100" />
         </state>
       </provider>
     </entry>
@@ -766,20 +714,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/reservations/reservation-guest-form.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/search-room/search-room-item.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="39" column="85" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="85" />
+        <state relative-caret-position="838">
+          <caret line="58" column="52" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="52" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/containers/reservations/reservation-guest-form.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="480">
+          <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
