@@ -1,4 +1,4 @@
-import {getRooms} from "../actions/actions_rooms";
+import _ from 'lodash'
 
 const rooms = (state = [], action) => {
 
@@ -23,25 +23,29 @@ const rooms = (state = [], action) => {
             return state
 
         case 'GET_AVAILABLE_ROOMS':
-            let availableRooms = []
+            let rooms = []
 
             state = []
 
             action.payload.rooms.forEach(room => {
-                action.payload.reservations.forEach(reservation => {
-                    if (room.data().name != reservation.data().room) {
-                        availableRooms.push({
-                            id: room.id,
-                            name: room.data().name,
-                            type: room.data().type,
-                            empty: room.data().empty,
-                            price: room.data().price,
-                        })
-                    }
+                rooms.push({
+                    id: room.id,
+                    name: room.data().name,
+                    type: room.data().type,
+                    empty: room.data().empty,
+                    price: room.data().price,
                 })
             })
 
-            state = state.concat(availableRooms)
+            let reservations = action.payload.reservations
+
+            reservations.forEach(reservation => {
+                _.remove(rooms, function(room) {
+                    return room.name == reservation.data().room;
+                });
+            })
+
+            state = state.concat(rooms)
 
             return state
 

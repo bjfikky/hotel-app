@@ -48,10 +48,10 @@ class App extends Component {
                     <div className="App">
                         <Switch>
                             <Route exact path="/" component={Dashboard}/>
-                            <Route exact path="/Reservation" component={Reservation}/>
                             <Route exact path="/Reservation/Search" component={ReservationSearchForm}/>
                             <Route exact path="/Reservation/ReservationForm" component={ReservationGuestForm}/>
                             <Route exact path="/Reservations/All" component={ReservationsList}/>
+                            <Route exact path="/Reservations/:id" component={Reservation}/>
                             <Route exact path="/Search/Rooms" component={RoomsList}/>
                             <Route exact path="/Rooms/Singles" component={SingleRooms}/>
                             <Route exact path="/Rooms/Doubles" component={DoubleRooms}/>

@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import moment from 'moment'
 
+import {addReservation} from "../../actions/actions_reservations";
+
 import countryList from '../../listof'
 
 import TextField from '@material-ui/core/TextField';
@@ -14,6 +16,21 @@ import Button from '@material-ui/core/Button';
 class ReservationGuestForm extends Component {
     constructor(props) {
         super(props)
+
+        this.state = {
+            room: this.props.location.state.room,
+            checkin: this.props.location.state.checkin,
+            checkout: this.props.location.state.checkout,
+
+            firstName: '',
+            lastName: '',
+            address: '',
+            city: '',
+            country: '',
+            email: '',
+            phone: '',
+            zipCode: '',
+        }
     }
     //moment(this.props.location.state.checkin, 'YYYY-MM-DD').format('LL')
 
@@ -33,7 +50,7 @@ class ReservationGuestForm extends Component {
         return (
             <div>
                 <h2>Complete Reservation</h2>
-                <form action="">
+                <form onSubmit={this.handleBookReservation}>
                     <Grid container>
                         <Grid item md={6}>
                             <Paper style={{ padding: 20, margin: 20}}>
@@ -46,28 +63,30 @@ class ReservationGuestForm extends Component {
 
                                 <h5>Guest Information</h5>
                                 <div style={{marginBottom:30, display: 'flex'}}>
-                                    <TextField label="First Name" style={{ flexGrow: 1, paddingRight: '20px' }}/>
-                                    <TextField label="Last Name" style={{ flexGrow: 1, paddingRight: '20px'  }}/>
+                                    <TextField label="First Name" style={{ flexGrow: 1, paddingRight: '20px' }} name="firstName" onChange={this.handleInputChange}/>
+                                    <TextField label="Last Name" style={{ flexGrow: 1, paddingRight: '20px'  }} name="lastName" onChange={this.handleInputChange}/>
                                 </div>
 
                                 <div style={{marginBottom:30, display: 'flex'}}>
-                                    <TextField label="Phone Number" style={{ flexGrow: 1, paddingRight: '20px' }}/>
-                                    <TextField label="Email Address" style={{ flexGrow: 1, paddingRight: '20px' }}/>
+                                    <TextField label="Phone Number" style={{ flexGrow: 1, paddingRight: '20px' }} name="phone" onChange={this.handleInputChange}/>
+                                    <TextField label="Email Address" style={{ flexGrow: 1, paddingRight: '20px' }} name="email" onChange={this.handleInputChange}/>
                                 </div>
 
                                 <div style={{marginBottom:30, display: 'flex'}}>
-                                    <TextField label="Address" style={{ flexGrow: 4, paddingRight: '20px' }}/>
-                                    <TextField label="City/Town" style={{ flexGrow: 1, paddingRight: '20px' }}/>
+                                    <TextField label="Address" style={{ flexGrow: 4, paddingRight: '20px' }} name="address" onChange={this.handleInputChange}/>
+                                    <TextField label="City/Town" style={{ flexGrow: 1, paddingRight: '20px' }} name="city" onChange={this.handleInputChange}/>
                                 </div>
 
                                 <div style={{marginBottom:30, display: 'flex'}}>
-                                    <TextField label="Postal Code" style={{ flexGrow: 1, paddingRight: '20px' }}/>
+                                    <TextField label="Zip Code" style={{ flexGrow: 1, paddingRight: '20px' }} name="zipCode" onChange={this.handleInputChange}/>
                                     <TextField
-                                        id="select-currency"
+                                        id="select-country"
+                                        name="country"
                                         select
                                         label="Select Country"
-                                        value="Select Country"
+                                        value={this.state.country}
                                         style={{ flexGrow: 3, paddingRight: '20px' }}
+                                        onChange={this.handleInputChange}
                                     >
                                         {countries.map(country => (
                                             <MenuItem key={country} value={country}>
@@ -131,11 +150,11 @@ class ReservationGuestForm extends Component {
                                 </div>
                             </Paper>
                             <div style={{marginLeft: '35%'}}>
-                                <Link to="/Reservation" style={{textDecoration: "none"}}>
-                                    <Button variant="contained" color="primary">
-                                        Book Reservation
-                                    </Button>
-                                </Link>
+
+                                <Button type="submit" variant="contained" color="primary">
+                                    Book Reservation
+                                </Button>
+
                             </div>
                         </Grid>
                     </Grid>
@@ -144,11 +163,31 @@ class ReservationGuestForm extends Component {
         );
     }
 
+
     numberOfNights = () => {
         let from = moment(this.props.location.state.checkin, 'MM/DD/YYYY')
         let to = moment(this.props.location.state.checkout, 'MM/DD/YYYY')
         return to.diff(from, 'days')
     }
+
+
+    handleInputChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+
+    handleBookReservation = (event) => {
+        event.preventDefault()
+        console.log(this.state)
+        this.props.addReservation(this.state, (data) => {
+            this.props.history.push({
+                pathname: `/Reservations/${data.id}`,
+            })
+        })
+    }
+
 }
 
 function mapStateToProps(state) {
@@ -157,4 +196,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
+    {addReservation}
 )(ReservationGuestForm);
