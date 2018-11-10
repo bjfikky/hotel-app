@@ -19,7 +19,8 @@ class Rooms extends Component {
                             <RoomItem
                                 checkin={this.props.location.state.checkin}
                                 checkout={this.props.location.state.checkout}
-                                room={room} key={room.id}
+                                room={room}
+                                key={room.id}
                                 history={this.props.history}
                             />
                         )

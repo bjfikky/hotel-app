@@ -37,6 +37,7 @@ export const addReservation = (reservation, callback) => {
         reservationsRef.add({
             checkedIn: false,
             room: reservation.room,
+            roomId: reservation.roomId,
             checkinDate: reservation.checkin,
             checkoutDate: reservation.checkout,
 
@@ -61,4 +62,60 @@ export const addReservation = (reservation, callback) => {
             callback(data)
         })
     }
+}
+
+
+export const checkinReservation = (id, callback) => {
+
+    let reservation = firebase.firestore().collection("reservations").doc(id).get()
+
+    let reservationRef = firebase.firestore().collection("reservations").doc(id).set({
+        status : 'CHECKED IN'
+    }, {merge : true})
+
+
+    return (dispatch) => {
+        reservation.then((data) => {
+            firebase.firestore().collection("rooms").doc(data.data().roomId).set({
+                guestName : data.data().guest.firstName + " " +  data.data().guest.lastName
+            }, {merge : true})
+
+            dispatch({
+                type: 'CHECKIN_RESERVATION',
+            })
+            callback()
+
+        })
+
+
+    }
+}
+
+
+export const checkoutReservation = (id, callback) => {
+    let reservationRef = firebase.firestore().collection("reservations").doc(id).set({
+        status : 'CHECKED OUT'
+    }, {merge : true})
+
+    return (dispatch) => {
+        reservationRef.then((data) => {
+            dispatch({
+                type: 'CHECKIN_RESERVATION',
+                payload: data
+            })
+            callback()
+        })
+    }
+}
+
+export const addGuestToRoom = (guest, room) => {
+
+
+    let roomRef = firebase.firestore().collection("rooms").where("name", "==", "101SG").get().then(
+        data => {
+            console.log(data.id)
+        }
+    )
+
+
 }

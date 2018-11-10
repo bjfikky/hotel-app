@@ -13,7 +13,7 @@ const rooms = (state = [], action) => {
                     id: room.id,
                     name: room.data().name,
                     type: room.data().type,
-                    empty: room.data().empty,
+                    guestName: room.data().guestName,
                     price: room.data().price,
                 })
             })
@@ -48,6 +48,9 @@ const rooms = (state = [], action) => {
             state = state.concat(rooms)
 
             return state
+
+        case 'ADD_GUEST_TO_ROOM':
+            console.log(action.payload.id)
 
         default: return state;
     }

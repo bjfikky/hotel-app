@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import {getReservation} from "../../actions/actions_reservations";
+import {checkinReservation} from "../../actions/actions_reservations";
+import {checkoutReservation} from "../../actions/actions_reservations";
 
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -26,6 +28,7 @@ class Reservation extends Component {
                             <div>
                                 <p style={{color: '#3f51b5'}}>Reservation Number: {String(this.props.reservation.id).toUpperCase()} </p>
                                 <p style={{color: '#3f51b5'}}>Room: {this.props.reservation.room} </p>
+                                <p style={{color: '#3f51b5'}}>Status: {this.props.reservation.status} </p>
                                 <p style={{color: '#3f51b5'}}>Checkin Date: {this.props.reservation.checkin}</p>
                                 <p style={{color: '#3f51b5'}}>Checkout Date: {this.props.reservation.checkout} <em>*(4 nights)</em></p>
                                 <p style={{color: '#3f51b5'}}>No. of Occupants: {this.props.reservation.occupants} </p>
@@ -64,12 +67,36 @@ class Reservation extends Component {
                     </Grid>
                 </Grid>
 
-                <Button variant="contained" color="primary">
-                    Check In Guest
-                </Button>
+
+                {
+                    this.props.reservation.status === 'CHECKED IN'
+                        ?
+                        <Button onClick={this.checkout} variant="contained" color="primary">
+                            Check Out Guest
+                        </Button>
+                        :
+                        <Button onClick={this.checkin} variant="contained" color="primary">
+                            Check In Guest
+                        </Button>
+                }
+
             </div>
         );
     }
+
+
+    checkin = () => {
+        this.props.checkinReservation(this.props.match.params.id, () => {
+            this.props.getReservation(this.props.match.params.id)
+        })
+    }
+
+    checkout = () => {
+        this.props.checkoutReservation(this.props.match.params.id, () => {
+            this.props.getReservation(this.props.match.params.id)
+        })
+    }
+
 }
 
 function mapStateToProps(state) {
@@ -80,5 +107,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    {getReservation}
+    {getReservation, checkinReservation, checkoutReservation}
 )(Reservation);

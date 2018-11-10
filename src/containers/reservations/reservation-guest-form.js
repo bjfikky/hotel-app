@@ -18,6 +18,7 @@ class ReservationGuestForm extends Component {
         super(props)
 
         this.state = {
+            roomId: this.props.location.state.roomId,
             room: this.props.location.state.room,
             checkin: this.props.location.state.checkin,
             checkout: this.props.location.state.checkout,

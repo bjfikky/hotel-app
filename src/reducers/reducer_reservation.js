@@ -4,9 +4,12 @@ const reservation = (state = [], action) => {
         case 'GET_RESERVATION':
             let data = action.payload
 
+            state = []
+
             let reservation = {
                 id: data.id,
                 room: data.data().room,
+                status : data.data().status,
                 checkin: data.data().checkinDate,
                 checkout: data.data().checkoutDate,
                 clerkEmail: data.data().clerkEmail,
@@ -22,7 +25,12 @@ const reservation = (state = [], action) => {
                 country: data.data().guest.country,
             }
 
-            return reservation
+            state = reservation
+
+            return state
+
+        case 'CHECKIN_RESERVATIONS':
+
 
         default: return state;
     }

@@ -57,7 +57,8 @@ class roomItem extends Component {
             state: {
                 checkin: moment(this.props.checkin, 'YYYY-MM-DD').format('L'),
                 checkout: moment(this.props.checkout, 'YYYY-MM-DD').format('L'),
-                room: this.props.room.name
+                room: this.props.room.name,
+                roomId: this.props.room.id
             }
         })
     }

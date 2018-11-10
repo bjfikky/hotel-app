@@ -8,9 +8,14 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+import {getRooms} from "../../actions/actions_rooms";
+
 
 
 class SuiteRooms extends Component {
+    componentWillMount() {
+        this.props.getRooms()
+    }
 
     //TODO: Add ReservationSearchForm Dates
 
@@ -46,25 +51,28 @@ class SuiteRooms extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.data.map(n => {
+                        {this.props.rooms.map(n => {
 
-                            if (n.status === 'empty') {
-                                statusColor = 'green'
-                            } else {
-                                statusColor = 'red'
+                            if (n.type === 'suite') {
+
+                                if (n.empty) {
+                                    statusColor = 'green'
+                                } else {
+                                    statusColor = 'red'
+                                }
+
+                                return (
+                                    <TableRow key={n.id}>
+                                        <TableCell component="th" scope="row">
+                                            <strong>{n.name}</strong>
+                                        </TableCell>
+
+                                        <TableCell style={{color: statusColor }}  >{n.empty ? 'empty' : 'occupied'}</TableCell>
+
+                                        <TableCell>{n.reservation}</TableCell>
+                                    </TableRow>
+                                );
                             }
-
-                            return (
-                                <TableRow key={n.id}>
-                                    <TableCell component="th" scope="row">
-                                        <strong>{n.roomName}</strong>
-                                    </TableCell>
-
-                                    <TableCell style={{color: statusColor }}  >{n.status}</TableCell>
-
-                                    <TableCell>{n.reservation}</TableCell>
-                                </TableRow>
-                            );
                         })}
                     </TableBody>
                 </Table>
@@ -75,9 +83,12 @@ class SuiteRooms extends Component {
 }
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        rooms: state.rooms
+    };
 }
 
 export default connect(
     mapStateToProps,
+    {getRooms}
 )(SuiteRooms);
