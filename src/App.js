@@ -27,7 +27,7 @@ import './App.css';
 
 class App extends Component {
     render() {
-        if (this.props.authenticated === false) {
+        if (this.props.auth === false) {
             return (
                 <BrowserRouter>
                     <Fragment>
@@ -44,7 +44,7 @@ class App extends Component {
             //TODO: Set up routes for when user is authenticated
             <BrowserRouter>
                 <Fragment>
-                    <Menu/>
+                    <Menu history={this.props.history}/>
                     <div className="App">
                         <Switch>
                             <Route exact path="/" component={Dashboard}/>
@@ -81,7 +81,7 @@ const NotFound = () => {
 
 function mapStateToProps(state) {
     return {
-        authenticated: state.authenticated
+        auth: state.auth
     }
 }
 

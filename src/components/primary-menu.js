@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+
+import {logout} from "../actions/actions_auth";
+
 
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -32,6 +36,7 @@ import Two from '@material-ui/icons/LooksTwo';
 import Star from '@material-ui/icons/Star';
 import Home from '@material-ui/icons/Home';
 import MailIcon from '@material-ui/icons/Mail';
+
 
 
 
@@ -256,8 +261,8 @@ class MenuDrawer extends Component {
         
         return (
             <div>
-                <AppBar position="static">
-                    <Toolbar>
+                <AppBar position="static" history={this.props.history}>
+                    <Toolbar history={this.props.history}>
                         <IconButton onClick={this.toggleDrawer(true)} style={styles.menuButton} aria-label="Menu" color="inherit">
                             <MenuIcon />
                         </IconButton>
@@ -272,7 +277,7 @@ class MenuDrawer extends Component {
                             </Badge>
                         </Button>
                         
-                        <Button color="inherit">Logout</Button>
+                        <Button onClick={this.logout} color="inherit">Logout</Button>
                     </Toolbar>
                 </AppBar>
                 
@@ -291,7 +296,21 @@ class MenuDrawer extends Component {
             </div>
         );
     }
+
+    logout = () => {
+        this.props.logout(() => {
+            console.log("log out")
+        })
+    }
+
 }
 
 
-export default MenuDrawer;
+function mapStateToProps(state) {
+    return {};
+}
+
+export default connect(
+    mapStateToProps,
+    {logout}
+)(MenuDrawer);
