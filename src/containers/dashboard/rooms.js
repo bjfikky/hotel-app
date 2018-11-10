@@ -9,25 +9,53 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+import {getRooms} from "../../actions/actions_rooms";
 
 
 class Rooms extends Component {
-    
-    id = 0;
-    
-    createData = (description, occupied, empty) => {
-        let id = this.id += 1;
-        return { id, description, occupied, empty};
+    componentWillMount() {
+        this.props.getRooms()
+
     }
-    
-    data = [
-        this.createData('All Rooms', 29, 26),
-        this.createData('Singles', 12, 8),
-        this.createData('Doubles', 9, 11),
-        this.createData('Suites', 5, 5),
-        this.createData('Bungalows', 3, 2),
-    ];
-    
+
+    getOccupiedRooms = (type) => {
+        let allRooms = this.props.rooms
+
+        let numOfEmpty = 0
+
+        if (type) {
+            for (let i = 0; i < allRooms.length; i++) {
+                if (allRooms[i].type == type) {
+                    if (allRooms[i].guestName) {
+                        numOfEmpty++
+                    }
+                }
+            }
+            return numOfEmpty
+        }
+
+        for (let i = 0; i < allRooms.length; i++) {
+            if (allRooms[i].guestName) {
+                numOfEmpty++
+            }
+        }
+
+        return numOfEmpty
+    }
+
+    getNumberOfRooms = (type) => {
+        let allRooms = this.props.rooms
+
+        let numOfType = 0
+
+        for (let i = 0; i < allRooms.length; i++) {
+            if (allRooms[i].type == type) {
+                numOfType++
+            }
+        }
+        return numOfType
+    }
+
     render() {
         return (
             <Grid item md={4} xs={12}>
@@ -43,17 +71,47 @@ class Rooms extends Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {this.data.map(n => {
-                                return (
-                                    <TableRow key={n.id}>
-                                        <TableCell component="th" scope="row">
-                                            {n.description}
-                                        </TableCell>
-                                        <TableCell style={{color: 'red'}} numeric>{n.occupied}</TableCell>
-                                        <TableCell style={{color: 'green'}} numeric>{n.empty}</TableCell>
-                                    </TableRow>
-                                );
-                            })}
+
+                            <TableRow>
+                                <TableCell component="th" scope="row">
+                                    All Rooms
+                                </TableCell>
+                                <TableCell style={{color: 'red'}} numeric>{this.getOccupiedRooms()}</TableCell>
+                                <TableCell style={{color: 'green'}} numeric>{this.props.rooms.length - this.getOccupiedRooms()}</TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell component="th" scope="row">
+                                    Singles
+                                </TableCell>
+                                <TableCell style={{color: 'red'}} numeric>{this.getOccupiedRooms("single")}</TableCell>
+                                <TableCell style={{color: 'green'}} numeric>{this.getNumberOfRooms("single")}</TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell component="th" scope="row">
+                                    Doubles
+                                </TableCell>
+                                <TableCell style={{color: 'red'}} numeric>{this.getOccupiedRooms("double")}</TableCell>
+                                <TableCell style={{color: 'green'}} numeric>{this.getNumberOfRooms("double")}</TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell component="th" scope="row">
+                                    Suites
+                                </TableCell>
+                                <TableCell style={{color: 'red'}} numeric>{this.getOccupiedRooms("suite")}</TableCell>
+                                <TableCell style={{color: 'green'}} numeric>{this.getNumberOfRooms("suite")}</TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell component="th" scope="row">
+                                    Bungalows
+                                </TableCell>
+                                <TableCell style={{color: 'red'}} numeric>{this.getOccupiedRooms("bungalow")}</TableCell>
+                                <TableCell style={{color: 'green'}} numeric>{this.getNumberOfRooms("bungalow")}</TableCell>
+                            </TableRow>
+
                         </TableBody>
                     </Table>
                 </Paper>
@@ -63,9 +121,12 @@ class Rooms extends Component {
 }
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        rooms: state.rooms
+    };
 }
 
 export default connect(
     mapStateToProps,
+    {getRooms}
 )(Rooms);

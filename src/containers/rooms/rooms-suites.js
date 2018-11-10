@@ -56,9 +56,9 @@ class SuiteRooms extends Component {
                             if (n.type === 'suite') {
 
                                 if (n.empty) {
-                                    statusColor = 'green'
-                                } else {
                                     statusColor = 'red'
+                                } else {
+                                    statusColor = 'green'
                                 }
 
                                 return (
@@ -67,7 +67,9 @@ class SuiteRooms extends Component {
                                             <strong>{n.name}</strong>
                                         </TableCell>
 
-                                        <TableCell style={{color: statusColor }}  >{n.empty ? 'empty' : 'occupied'}</TableCell>
+                                        <TableCell style={{color: statusColor }}  >
+                                            {n.guestName ? n.guestName  : 'empty'}
+                                        </TableCell>
 
                                         <TableCell>{n.reservation}</TableCell>
                                     </TableRow>

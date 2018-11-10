@@ -28,9 +28,6 @@ const style = {
 
 
 class Dashboard extends Component {
-    componentDidMount() {
-        console.log("Mounted");
-    }
     
     render() {
         return (

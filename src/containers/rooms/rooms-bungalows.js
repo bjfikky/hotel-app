@@ -8,26 +8,13 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+import {getRooms} from "../../actions/actions_rooms";
 
 
 class BungalowRooms extends Component {
-
-    //TODO: Add ReservationSearchForm Dates
-
-    id = 0;
-
-    createData = (roomName, status, reservation) => {
-        let id = this.id += 1;
-        return { id, roomName, status, reservation};
+    componentWillMount() {
+        this.props.getRooms()
     }
-
-    data = [
-        this.createData('101 Bungalow', 'empty', 26),
-        this.createData('103 Bungalow', 'empty', 8),
-        this.createData('105 Bungalow', 'occupied', 11),
-        this.createData('107 Bungalow', 'empty', 5),
-        this.createData('109 Bungalow', 'occupied', 2),
-    ];
 
 
     render() {
@@ -46,25 +33,29 @@ class BungalowRooms extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.data.map(n => {
+                        {this.props.rooms.map(n => {
 
-                            if (n.status === 'empty') {
-                                statusColor = 'green'
-                            } else {
-                                statusColor = 'red'
+                            if (n.type === 'bungalow') {
+
+                                if (n.status === 'empty') {
+                                    statusColor = 'red'
+                                } else {
+                                    statusColor = 'green'
+                                }
+
+                                return (
+                                    <TableRow key={n.id}>
+                                        <TableCell component="th" scope="row">
+                                            <strong>{n.name}</strong>
+                                        </TableCell>
+
+                                        <TableCell style={{color: statusColor }}  >{n.guestName ? n.guestName  : 'empty'}</TableCell>
+
+                                        <TableCell>{n.reservation}</TableCell>
+                                    </TableRow>
+                                );
+
                             }
-
-                            return (
-                                <TableRow key={n.id}>
-                                    <TableCell component="th" scope="row">
-                                        <strong>{n.roomName}</strong>
-                                    </TableCell>
-
-                                    <TableCell style={{color: statusColor }}  >{n.status}</TableCell>
-
-                                    <TableCell>{n.reservation}</TableCell>
-                                </TableRow>
-                            );
                         })}
                     </TableBody>
                 </Table>
@@ -75,9 +66,12 @@ class BungalowRooms extends Component {
 }
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        rooms: state.rooms
+    };
 }
 
 export default connect(
     mapStateToProps,
+    {getRooms}
 )(BungalowRooms);

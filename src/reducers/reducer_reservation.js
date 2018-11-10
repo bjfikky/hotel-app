@@ -31,6 +31,8 @@ const reservation = (state = [], action) => {
 
         case 'CHECKIN_RESERVATIONS':
 
+        case 'CHECKOUT_RESERVATIONS':
+
 
         default: return state;
     }

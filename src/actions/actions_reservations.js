@@ -69,9 +69,9 @@ export const checkinReservation = (id, callback) => {
 
     let reservation = firebase.firestore().collection("reservations").doc(id).get()
 
-    let reservationRef = firebase.firestore().collection("reservations").doc(id).set({
+    firebase.firestore().collection("reservations").doc(id).set({
         status : 'CHECKED IN'
-    }, {merge : true})
+    }, {merge : true}).catch(error => { alert(error.message)})
 
 
     return (dispatch) => {
@@ -86,21 +86,25 @@ export const checkinReservation = (id, callback) => {
             callback()
 
         })
-
-
     }
 }
 
 
 export const checkoutReservation = (id, callback) => {
-    let reservationRef = firebase.firestore().collection("reservations").doc(id).set({
+    let reservation = firebase.firestore().collection("reservations").doc(id).get()
+
+    firebase.firestore().collection("reservations").doc(id).set({
         status : 'CHECKED OUT'
     }, {merge : true})
 
     return (dispatch) => {
-        reservationRef.then((data) => {
+        reservation.then((data) => {
+            firebase.firestore().collection("rooms").doc(data.data().roomId).update({
+                guestName: firebase.firestore.FieldValue.delete()
+            })
+
             dispatch({
-                type: 'CHECKIN_RESERVATION',
+                type: 'CHECKOUT_RESERVATION',
                 payload: data
             })
             callback()
