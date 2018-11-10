@@ -36,7 +36,6 @@ class SingleRooms extends Component {
                             {
                                 this.props.rooms.map(n => {
 
-//CHECK IF THE ROOM TYPE IS SINGLE
                                     if (n.type === 'single') {
                                         if (n.guestName) {
                                             statusColor = 'red'
@@ -58,6 +57,8 @@ class SingleRooms extends Component {
                                             </TableRow>
                                         )
                                     }
+
+                                    return ''
                                 })
                             }
                         </TableBody>

@@ -9,34 +9,15 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 
+import {getReservations} from "../../actions/actions_reservations";
+
 
 class GuestsArchive extends Component {
-
-    //TODO: Add search bar to old guest list table
-
-    id = 0;
-
-    createData = (guestName, roomName, checkin, checkout) => {
-        let id = this.id += 1;
-        return { id, guestName, roomName, checkin, checkout};
+    componentWillMount () {
+        this.props.getReservations()
     }
 
-    data = [
-        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
-        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
-        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
-        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
-        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
-        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
-        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
-        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
-        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
-        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
-        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
-        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
-        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
-        this.createData('James Franklyn', '103 Double', '05/12/2015', '09/19/2015'),
-    ];
+    //TODO: Add search bar to old guest list table
 
 
     render() {
@@ -54,22 +35,26 @@ class GuestsArchive extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.data.map(n => {
+                        {
+                            this.props.reservations.map(n => {
+                                if (n.status === 'CHECKED OUT') {
+                                    return (
+                                        <TableRow key={n.id}>
+                                            <TableCell component="th" scope="row">
+                                                <strong>{n.guestName}</strong>
+                                            </TableCell>
 
-                            return (
-                                <TableRow key={n.id}>
-                                    <TableCell component="th" scope="row">
-                                        <strong>{n.guestName}</strong>
-                                    </TableCell>
+                                            <TableCell>{n.roomName}</TableCell>
 
-                                    <TableCell>{n.roomName}</TableCell>
+                                            <TableCell>{n.checkin}</TableCell>
 
-                                    <TableCell>{n.checkin}</TableCell>
-
-                                    <TableCell>{n.checkout}</TableCell>
-                                </TableRow>
-                            );
-                        })}
+                                            <TableCell>{n.checkout}</TableCell>
+                                        </TableRow>
+                                    );
+                                }
+                                return ''
+                            })
+                        }
                     </TableBody>
                 </Table>
             </Paper>
@@ -79,9 +64,12 @@ class GuestsArchive extends Component {
 }
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        reservations: state.reservations
+    };
 }
 
 export default connect(
     mapStateToProps,
+    {getReservations}
 )(GuestsArchive);

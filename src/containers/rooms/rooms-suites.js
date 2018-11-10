@@ -75,6 +75,7 @@ class SuiteRooms extends Component {
                                     </TableRow>
                                 );
                             }
+                            return ''
                         })}
                     </TableBody>
                 </Table>

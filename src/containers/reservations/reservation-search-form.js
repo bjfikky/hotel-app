@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { Link, withRouter } from 'react-router-dom'
 import * as moment from 'moment';
 
 import {getAvailableRooms} from "../../actions/actions_rooms";

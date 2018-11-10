@@ -36,7 +36,6 @@ class DoubleRooms extends Component {
                         {
                             this.props.rooms.map(n => {
 
-//CHECK IF THE ROOM TYPE IS DOUBLE
                                 if (n.type === 'double') {
                                     if (n.empty) {
                                         statusColor = 'red'
@@ -56,6 +55,7 @@ class DoubleRooms extends Component {
                                         </TableRow>
                                     )
                                 }
+                                return ''
                             })
                         }
                     </TableBody>

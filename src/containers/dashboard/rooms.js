@@ -25,7 +25,7 @@ class Rooms extends Component {
 
         if (type) {
             for (let i = 0; i < allRooms.length; i++) {
-                if (allRooms[i].type == type) {
+                if (allRooms[i].type === type) {
                     if (allRooms[i].guestName) {
                         numOfEmpty++
                     }
@@ -49,7 +49,7 @@ class Rooms extends Component {
         let numOfType = 0
 
         for (let i = 0; i < allRooms.length; i++) {
-            if (allRooms[i].type == type) {
+            if (allRooms[i].type === type) {
                 numOfType++
             }
         }

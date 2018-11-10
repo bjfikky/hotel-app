@@ -54,8 +54,9 @@ class BungalowRooms extends Component {
                                         <TableCell>{n.reservation}</TableCell>
                                     </TableRow>
                                 );
-
                             }
+
+                            return ''
                         })}
                     </TableBody>
                 </Table>

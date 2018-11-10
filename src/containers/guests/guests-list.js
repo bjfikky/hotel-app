@@ -35,23 +35,26 @@ class GuestsList extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.props.reservations.map(n => {
-                            if (n.status == 'CHECKED IN') {
-                                return (
-                                    <TableRow key={n.id}>
-                                        <TableCell component="th" scope="row">
-                                            <strong>{n.guestName}</strong>
-                                        </TableCell>
+                        {
+                            this.props.reservations.map(n => {
+                                if (n.status === 'CHECKED IN') {
+                                    return (
+                                        <TableRow key={n.id}>
+                                            <TableCell component="th" scope="row">
+                                                <strong>{n.guestName}</strong>
+                                            </TableCell>
 
-                                        <TableCell>{n.roomName}</TableCell>
+                                            <TableCell>{n.roomName}</TableCell>
 
-                                        <TableCell>{n.checkin}</TableCell>
+                                            <TableCell>{n.checkin}</TableCell>
 
-                                        <TableCell>{n.checkout}</TableCell>
-                                    </TableRow>
-                                );
-                            }
-                        })}
+                                            <TableCell>{n.checkout}</TableCell>
+                                        </TableRow>
+                                    );
+                                }
+                                return ''
+                            })
+                        }
                     </TableBody>
                 </Table>
             </Paper>

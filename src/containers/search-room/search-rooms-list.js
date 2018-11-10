@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
 
 import RoomItem from './search-room-item';
 import RoomFilters from './search-room-filter';

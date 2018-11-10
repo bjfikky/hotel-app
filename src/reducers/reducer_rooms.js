@@ -41,7 +41,7 @@ const rooms = (state = [], action) => {
 
             reservations.forEach(reservation => {
                 _.remove(rooms, function(room) {
-                    return room.name == reservation.data().room;
+                    return room.name === reservation.data().room;
                 });
             })
 
@@ -51,6 +51,7 @@ const rooms = (state = [], action) => {
 
         case 'ADD_GUEST_TO_ROOM':
             console.log(action.payload.id)
+            break
 
         default: return state;
     }

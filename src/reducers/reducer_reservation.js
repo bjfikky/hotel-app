@@ -21,7 +21,6 @@ const reservation = (state = [], action) => {
                 address: data.data().guest.address,
                 city: data.data().guest.city,
                 zipCode: data.data().guest.zipCode,
-                phone: data.data().guest.phone,
                 country: data.data().guest.country,
             }
 
@@ -30,8 +29,10 @@ const reservation = (state = [], action) => {
             return state
 
         case 'CHECKIN_RESERVATIONS':
+            break
 
         case 'CHECKOUT_RESERVATIONS':
+            break
 
 
         default: return state;
