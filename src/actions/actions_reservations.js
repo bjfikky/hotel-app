@@ -24,6 +24,7 @@ export const getReservation = (id) => {
                 type: 'GET_RESERVATION',
                 payload: data
             })
+            console.log("getting reservation")
         })
     }
 }

@@ -15,7 +15,7 @@ import TableRow from '@material-ui/core/TableRow';
 
 class ReservationsList extends Component {
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.getReservations()
     }
 
@@ -42,7 +42,7 @@ class ReservationsList extends Component {
                         {this.props.reservations.map(n => {
 
                             return (
-                                <TableRow key={n.id}>
+                                <TableRow onClick={() => this.viewReservation(n.id)} key={n.id} className="tableStyle">
                                     <TableCell component="th" scope="row">
                                         <strong>{n.guestName}</strong>
                                     </TableCell>
@@ -62,6 +62,12 @@ class ReservationsList extends Component {
             </Paper>
 
         );
+    }
+
+    viewReservation = (id) => {
+        this.props.history.push({
+            pathname: `/Reservations/${id}`,
+        })
     }
 }
 

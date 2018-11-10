@@ -3,6 +3,7 @@ const reservations = (state = [], action) => {
 
     switch (action.type) {
         case 'FETCH_RESERVATIONS':
+            state = []
             let allReservations = []
 
             action.payload.forEach(reservation => {

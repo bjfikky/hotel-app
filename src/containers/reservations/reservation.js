@@ -2,12 +2,20 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
+import {getReservation} from "../../actions/actions_reservations";
+
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
 class Reservation extends Component {
+    componentDidMount() {
+        let id = this.props.match.params.id;
+        this.props.getReservation(id)
+    }
+
     render() {
+
         return (
             <div>
                 <h2>Reservation</h2>
@@ -16,10 +24,11 @@ class Reservation extends Component {
                         <Paper style={{ padding: 20, margin: 20}}>
                             <h4>Reservation Details</h4>
                             <div>
-                                <p style={{color: '#3f51b5'}}>Reservation Number: 164847364748 </p>
-                                <p style={{color: '#3f51b5'}}>Room: 101 Single </p>
-                                <p style={{color: '#3f51b5'}}>Date: 05/20/2018 - 05/24/2018 <em>*(4 nights)</em></p>
-                                <p style={{color: '#3f51b5'}}>No. of Occupants: 3 </p>
+                                <p style={{color: '#3f51b5'}}>Reservation Number: {String(this.props.reservation.id).toUpperCase()} </p>
+                                <p style={{color: '#3f51b5'}}>Room: {this.props.reservation.room} </p>
+                                <p style={{color: '#3f51b5'}}>Checkin Date: {this.props.reservation.checkin}</p>
+                                <p style={{color: '#3f51b5'}}>Checkout Date: {this.props.reservation.checkout} <em>*(4 nights)</em></p>
+                                <p style={{color: '#3f51b5'}}>No. of Occupants: {this.props.reservation.occupants} </p>
                             </div>
 
                             <hr/>
@@ -29,24 +38,24 @@ class Reservation extends Component {
                                 <Grid item md={4}>
                                     <div>
                                         <h6>Name:</h6>
-                                        <p>Benjamin Orimoloye</p>
+                                        <p>{this.props.reservation.firstName} {this.props.reservation.lastName}</p>
                                     </div>
 
                                     <div>
                                         <h6>Phone Number:</h6>
-                                        <p>2404748710</p>
+                                        <p>{this.props.reservation.phone}</p>
                                     </div>
                                 </Grid>
 
                                 <Grid item md={8}>
                                     <div>
                                         <h6>Email Address:</h6>
-                                        <p>bjfikky@yahoo.com</p>
+                                        <p>{this.props.reservation.email}</p>
                                     </div>
 
                                     <div>
                                         <h6>Address:</h6>
-                                        <p>Goucher Road, Towson - MD 21204</p>
+                                        <p>{this.props.reservation.address}, {this.props.reservation.city} - {this.props.reservation.zipCode}, {this.props.reservation.country}</p>
                                     </div>
                                 </Grid>
 
@@ -64,9 +73,12 @@ class Reservation extends Component {
 }
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        reservation: state.reservation
+    };
 }
 
 export default connect(
     mapStateToProps,
+    {getReservation}
 )(Reservation);
