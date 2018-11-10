@@ -11,6 +11,7 @@ const reservations = (state = [], action) => {
                     id: reservation.id,
                     reserveNum: reservation.id,
                     roomName: reservation.data().room,
+                    status: reservation.data().status,
                     guestName: reservation.data().guest.firstName + " " + reservation.data().guest.lastName,
                     checkin: reservation.data().checkinDate,
                     checkout: reservation.data().checkoutDate

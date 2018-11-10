@@ -9,35 +9,15 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+import {getReservations} from "../../actions/actions_reservations";
 
 
 class GuestsList extends Component {
-
-    //TODO: Add search bar to guest list table
-
-    id = 0;
-
-    createData = (guestName, roomName, checkin, checkout) => {
-        let id = this.id += 1;
-        return { id, guestName, roomName, checkin, checkout};
+    componentWillMount() {
+        this.props.getReservations()
     }
 
-    data = [
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-        this.createData('Benjamin Orimoloye', '104 Suite', '09/12/2018', '09/16/2018'),
-    ];
+    //TODO: Add search bar to guest list table
 
 
     render() {
@@ -55,20 +35,22 @@ class GuestsList extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.data.map(n => {
-                            return (
-                                <TableRow key={n.id}>
-                                    <TableCell component="th" scope="row">
-                                        <strong>{n.guestName}</strong>
-                                    </TableCell>
+                        {this.props.reservations.map(n => {
+                            if (n.status == 'CHECKED IN') {
+                                return (
+                                    <TableRow key={n.id}>
+                                        <TableCell component="th" scope="row">
+                                            <strong>{n.guestName}</strong>
+                                        </TableCell>
 
-                                    <TableCell>{n.roomName}</TableCell>
+                                        <TableCell>{n.roomName}</TableCell>
 
-                                    <TableCell>{n.checkin}</TableCell>
+                                        <TableCell>{n.checkin}</TableCell>
 
-                                    <TableCell>{n.checkout}</TableCell>
-                                </TableRow>
-                            );
+                                        <TableCell>{n.checkout}</TableCell>
+                                    </TableRow>
+                                );
+                            }
                         })}
                     </TableBody>
                 </Table>
@@ -79,9 +61,12 @@ class GuestsList extends Component {
 }
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        reservations: state.reservations
+    };
 }
 
 export default connect(
     mapStateToProps,
+    {getReservations}
 )(GuestsList);

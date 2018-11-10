@@ -112,14 +112,22 @@ export const checkoutReservation = (id, callback) => {
     }
 }
 
-export const addGuestToRoom = (guest, room) => {
 
+export const searchReservation = (confirmationNumber, callback) => {
+    let reservationsQuery = firebase.firestore().collection("reservations").doc(confirmationNumber).get().catch(error => {
+        alert(error.message)
+        return
+    })
 
-    let roomRef = firebase.firestore().collection("rooms").where("name", "==", "101SG").get().then(
-        data => {
-            console.log(data.id)
-        }
-    )
+    console.log("from action", confirmationNumber)
 
-
+    return (dispatch) => {
+        reservationsQuery.then(data => {
+            dispatch({
+                type: 'SEARCH_RESERVATION',
+                payload: data
+            })
+            callback()
+        })
+    }
 }

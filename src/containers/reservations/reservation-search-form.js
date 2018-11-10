@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 import * as moment from 'moment';
 
 import {getAvailableRooms} from "../../actions/actions_rooms";
+import {searchReservation} from "../../actions/actions_reservations";
 
 
 import Paper from '@material-ui/core/Paper';
@@ -15,6 +16,11 @@ import Divider from '@material-ui/core/Divider';
 
 const style = {
     date: {
+        padding: '10px 5px',
+        display: 'inline',
+    },
+
+    confirmation: {
         padding: '10px 5px',
         display: 'inline',
     }
@@ -31,8 +37,9 @@ class ReservationSearchForm extends Component {
             moreOptions: false,
 
             checkin: this.getTodaysDate(),
-            checkout: this.getTodaysDate(1)
+            checkout: this.getTodaysDate(1),
 
+            confirmationNum: ''
         }
     }
 
@@ -103,35 +110,26 @@ class ReservationSearchForm extends Component {
     
                     <Divider style={{margin: '20px 0px'}}/>
                     
-                    <form>
+                    <form onSubmit={this.handleConfirmationSubmit}>
                         <Grid container>
-                            <Grid item sm style={style.date}>
+                            <Grid item sm style={style.confirmation}>
                                 <TextField
                                     id="confirmation"
                                     label="Confirmation Number"
+                                    name="confirmationNum"
                                     type="string"
+                                    width="400px"
                                     placeholder="Confirmation Number"
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                />
-                            </Grid>
-                            
-                            <Grid item sm style={style.date}>
-                                <TextField
-                                    id="lastName"
-                                    label="Last Name"
-                                    type="string"
-                                    placeholder="Last Name"
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
+                                    onChange={this.handleInputChange}
                                 />
                             </Grid>
                         </Grid>
     
                         <div style={{padding: '10px 5px'}}>
-                            <Button variant="contained" color="primary">
+                            <Button variant="contained" type="submit" color="primary">
                                 View Reservation
                             </Button>
                         </div>
@@ -180,6 +178,16 @@ class ReservationSearchForm extends Component {
             })
         })
     }
+
+    handleConfirmationSubmit = (event) => {
+        event.preventDefault()
+        console.log("searching confirmation")
+        this.props.searchReservation(this.state.confirmationNum, () => {
+            this.props.history.push({
+                pathname: `/Reservations/${this.state.confirmationNum}`,
+            })
+        })
+    }
 }
 
 
@@ -204,5 +212,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    {getAvailableRooms}
+    {getAvailableRooms, searchReservation}
 )(ReservationSearchForm);
