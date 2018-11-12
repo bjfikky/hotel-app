@@ -26,7 +26,7 @@ class Rooms extends Component {
         if (type) {
             for (let i = 0; i < allRooms.length; i++) {
                 if (allRooms[i].type === type) {
-                    if (allRooms[i].guestName) {
+                    if (allRooms[i].guest) {
                         numOfEmpty++
                     }
                 }
@@ -35,7 +35,7 @@ class Rooms extends Component {
         }
 
         for (let i = 0; i < allRooms.length; i++) {
-            if (allRooms[i].guestName) {
+            if (allRooms[i].guest) {
                 numOfEmpty++
             }
         }
@@ -60,7 +60,7 @@ class Rooms extends Component {
         return (
             <Grid item md={4} xs={12}>
                 <Paper style={this.props.style.paper}>
-                    <h3 style={this.props.style.paperTitle}>Rooms</h3>
+                    <h3 style={this.props.style.paperTitle}>Rooms Snapshot</h3>
     
                     <Table >
                         <TableHead>
@@ -85,7 +85,7 @@ class Rooms extends Component {
                                     Singles
                                 </TableCell>
                                 <TableCell style={{color: 'red'}} numeric>{this.getOccupiedRooms("single")}</TableCell>
-                                <TableCell style={{color: 'green'}} numeric>{this.getNumberOfRooms("single")}</TableCell>
+                                <TableCell style={{color: 'green'}} numeric>{this.getNumberOfRooms("single") - this.getOccupiedRooms("single")}</TableCell>
                             </TableRow>
 
                             <TableRow>
@@ -93,7 +93,7 @@ class Rooms extends Component {
                                     Doubles
                                 </TableCell>
                                 <TableCell style={{color: 'red'}} numeric>{this.getOccupiedRooms("double")}</TableCell>
-                                <TableCell style={{color: 'green'}} numeric>{this.getNumberOfRooms("double")}</TableCell>
+                                <TableCell style={{color: 'green'}} numeric>{this.getNumberOfRooms("double") - this.getOccupiedRooms("double")}</TableCell>
                             </TableRow>
 
                             <TableRow>
@@ -101,7 +101,7 @@ class Rooms extends Component {
                                     Suites
                                 </TableCell>
                                 <TableCell style={{color: 'red'}} numeric>{this.getOccupiedRooms("suite")}</TableCell>
-                                <TableCell style={{color: 'green'}} numeric>{this.getNumberOfRooms("suite")}</TableCell>
+                                <TableCell style={{color: 'green'}} numeric>{this.getNumberOfRooms("suite") - this.getOccupiedRooms("suite")}</TableCell>
                             </TableRow>
 
                             <TableRow>
@@ -109,7 +109,7 @@ class Rooms extends Component {
                                     Bungalows
                                 </TableCell>
                                 <TableCell style={{color: 'red'}} numeric>{this.getOccupiedRooms("bungalow")}</TableCell>
-                                <TableCell style={{color: 'green'}} numeric>{this.getNumberOfRooms("bungalow")}</TableCell>
+                                <TableCell style={{color: 'green'}} numeric>{this.getNumberOfRooms("bungalow") - this.getOccupiedRooms("bungalow")}</TableCell>
                             </TableRow>
 
                         </TableBody>

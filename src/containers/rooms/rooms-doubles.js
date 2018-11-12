@@ -29,15 +29,16 @@ class DoubleRooms extends Component {
                         <TableRow>
                             <TableCell>Room Name</TableCell>
                             <TableCell>Occupied</TableCell>
-                            <TableCell>Reservation (next 30 days)</TableCell>
+                            <TableCell>Checkin Date</TableCell>
+                            <TableCell>Checkout Date</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {
                             this.props.rooms.map(n => {
-
+    console.log("test")
                                 if (n.type === 'double') {
-                                    if (n.empty) {
+                                    if (n.guest) {
                                         statusColor = 'red'
                                     } else {
                                         statusColor = 'green'
@@ -49,13 +50,15 @@ class DoubleRooms extends Component {
                                                 <strong>{n.name}</strong>
                                             </TableCell>
 
-                                            <TableCell style={{color: statusColor }}  >{n.guestName ? n.guestName  : 'empty'}</TableCell>
+                                            <TableCell style={{color: statusColor }}>{n.guest ? n.guest.name  : 'empty'}</TableCell>
 
-                                            <TableCell>{n.reservation}</TableCell>
+                                            <TableCell style={{color: statusColor }}>{n.guest ? n.guest.checkinDate  : ''}</TableCell>
+
+                                            <TableCell style={{color: statusColor }}>{n.guest ? n.guest.checkoutDate  : ''}</TableCell>
                                         </TableRow>
                                     )
                                 }
-                                return ''
+
                             })
                         }
                     </TableBody>

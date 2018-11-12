@@ -16,6 +16,11 @@ class Reservation extends Component {
     }
 
     render() {
+        if (! this.props.reservation) {
+            return (
+                <h3>The reservation does not exist</h3>
+            )
+        }
 
         return (
             <div>
@@ -25,12 +30,11 @@ class Reservation extends Component {
                         <Paper style={{ padding: 20, margin: 20}}>
                             <h4>Reservation Details</h4>
                             <div>
-                                <p style={{color: '#3f51b5'}}>Reservation Number: {String(this.props.reservation.id).toUpperCase()} </p>
+                                <p style={{color: '#3f51b5'}}>Reservation Number: {this.props.reservation.id} </p>
                                 <p style={{color: '#3f51b5'}}>Room: {this.props.reservation.room} </p>
                                 <p style={{color: '#3f51b5'}}>Status: {this.props.reservation.status} </p>
                                 <p style={{color: '#3f51b5'}}>Checkin Date: {this.props.reservation.checkin}</p>
                                 <p style={{color: '#3f51b5'}}>Checkout Date: {this.props.reservation.checkout} <em>*(4 nights)</em></p>
-                                <p style={{color: '#3f51b5'}}>No. of Occupants: {this.props.reservation.occupants} </p>
                             </div>
 
                             <hr/>

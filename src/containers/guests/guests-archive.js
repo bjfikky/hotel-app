@@ -52,7 +52,7 @@ class GuestsArchive extends Component {
                                         </TableRow>
                                     );
                                 }
-                                return ''
+
                             })
                         }
                     </TableBody>

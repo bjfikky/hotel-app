@@ -35,7 +35,6 @@ export const addReservation = (reservation, callback) => {
 
     return (dispatch) => {
         reservationsRef.add({
-            checkedIn: false,
             room: reservation.room,
             roomId: reservation.roomId,
             checkinDate: reservation.checkin,
@@ -46,6 +45,7 @@ export const addReservation = (reservation, callback) => {
                 lastName: reservation.lastName,
                 address: reservation.address,
                 city: reservation.city,
+                state: reservation.state,
                 country: reservation.country,
                 email: reservation.email,
                 phone: reservation.phone,
@@ -55,6 +55,21 @@ export const addReservation = (reservation, callback) => {
             reservationDate: new Date()
 
         }).then((data) => {
+            firebase.firestore().collection("rooms").doc(reservation.roomId).set({
+                reservations: [
+                    {
+                        reservationDate: new Date(),
+                        reservationNumber: data.id,
+                        checkinDate: reservation.checkin,
+                        checkoutDate: reservation.checkout,
+                        firstName: reservation.firstName,
+                        lastName: reservation.lastName,
+                        email: reservation.email,
+                        phone: reservation.phone,
+                    }
+                ]
+            }, {merge: true})
+
             dispatch({
                 type: 'ADD_RESERVATION'
             })
@@ -77,7 +92,12 @@ export const checkinReservation = (id, callback) => {
     return (dispatch) => {
         reservation.then((data) => {
             firebase.firestore().collection("rooms").doc(data.data().roomId).set({
-                guestName : data.data().guest.firstName + " " +  data.data().guest.lastName
+                guest: {
+                    reservationId: data.id,
+                    name :data.data().guest.firstName + " " +  data.data().guest.lastName,
+                    checkinDate: data.data().checkinDate,
+                    checkoutDate: data.data().checkoutDate,
+                }
             }, {merge : true})
 
             dispatch({
@@ -100,7 +120,7 @@ export const checkoutReservation = (id, callback) => {
     return (dispatch) => {
         reservation.then((data) => {
             firebase.firestore().collection("rooms").doc(data.data().roomId).update({
-                guestName: firebase.firestore.FieldValue.delete()
+                guest: firebase.firestore.FieldValue.delete()
             })
 
             dispatch({

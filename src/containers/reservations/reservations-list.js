@@ -40,22 +40,25 @@ class ReservationsList extends Component {
                     </TableHead>
                     <TableBody>
                         {this.props.reservations.map(n => {
+                            if (! n.status) {
+                                return (
+                                    <TableRow onClick={() => this.viewReservation(n.id)} key={n.id} className="tableStyle">
+                                        <TableCell component="th" scope="row">
+                                            <strong>{n.guestName}</strong>
+                                        </TableCell>
 
-                            return (
-                                <TableRow onClick={() => this.viewReservation(n.id)} key={n.id} className="tableStyle">
-                                    <TableCell component="th" scope="row">
-                                        <strong>{n.guestName}</strong>
-                                    </TableCell>
+                                        <TableCell>{n.roomName}</TableCell>
 
-                                    <TableCell>{n.roomName}</TableCell>
+                                        <TableCell>{n.reserveNum}</TableCell>
 
-                                    <TableCell>{n.reserveNum}</TableCell>
+                                        <TableCell>{n.checkin}</TableCell>
 
-                                    <TableCell>{n.checkin}</TableCell>
+                                        <TableCell>{n.checkout}</TableCell>
+                                    </TableRow>
+                                )
+                            }
 
-                                    <TableCell>{n.checkout}</TableCell>
-                                </TableRow>
-                            );
+
                         })}
                     </TableBody>
                 </Table>

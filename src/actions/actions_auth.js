@@ -11,7 +11,6 @@ export const login = (email, password, callback) => {
 
     return (dispatch) => {
         auth.then((data) => {
-            console.log(data)
             dispatch({
                 type: 'LOGIN',
                 payload: data

@@ -146,24 +146,6 @@ class MenuDrawer extends Component {
             <Collapse in={this.state.roomOpen} timeout="auto" unmountOnExit>
                 <List style={styles.subMenu}>
 
-                    <Link to="/Rooms/Empty" style={{textDecoration: "none"}}>
-                        <ListItem button onClick={this.toggleDrawer(false)}>
-                            <ListItemIcon>
-                                <AddCircle />
-                            </ListItemIcon>
-                            <ListItemText inset primary="Empty" />
-                        </ListItem>
-                    </Link>
-
-                    <Link to="/Rooms/Occupied" style={{textDecoration: "none"}}>
-                        <ListItem button onClick={this.toggleDrawer(false)}>
-                            <ListItemIcon>
-                                <RemoveCircle />
-                            </ListItemIcon>
-                            <ListItemText inset primary="Occupied" />
-                        </ListItem>
-                    </Link>
-
                     <Link to="/Rooms/Singles" style={{textDecoration: "none"}}>
                         <ListItem button onClick={this.toggleDrawer(false)}>
                             <ListItemIcon>
@@ -251,7 +233,7 @@ class MenuDrawer extends Component {
 
                 <Divider/>
     
-                <ListItem button>
+                <ListItem button onClick={this.logout}>
                     
                     <ListItemText primary="Logout" />
                 </ListItem>
@@ -271,7 +253,7 @@ class MenuDrawer extends Component {
                             
                         </Typography>
                         
-                        <Button color="inherit">
+                        <Button color="inherit" onClick={this.handleMessage}>
                             <Badge  badgeContent={4} color="secondary">
                                 <MailIcon />
                             </Badge>
@@ -297,9 +279,12 @@ class MenuDrawer extends Component {
         );
     }
 
+    handleMessage = () => {
+        alert("Messaging feature coming soon")
+    }
+
     logout = () => {
         this.props.logout(() => {
-            console.log("log out")
         })
     }
 

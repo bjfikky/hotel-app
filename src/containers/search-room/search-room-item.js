@@ -29,7 +29,7 @@ class roomItem extends Component {
                     </Grid>
 
                     <Grid item md={2}>
-                        <h5 style={{color: 'green'}}>${this.props.room.price}</h5>
+                        <h5 style={{color: 'green'}}>${this.props.room.price} per night</h5>
 
                         <Button variant="contained" color="primary" onClick={this.handleReserveClick}>
                             Reserve
@@ -53,6 +53,7 @@ class roomItem extends Component {
             state: {
                 checkin: moment(this.props.checkin, 'YYYY-MM-DD').format('L'),
                 checkout: moment(this.props.checkout, 'YYYY-MM-DD').format('L'),
+                price: this.props.room.price,
                 room: this.props.room.name,
                 roomId: this.props.room.id
             }

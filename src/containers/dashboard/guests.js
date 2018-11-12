@@ -9,29 +9,38 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+import {getReservations} from "../../actions/actions_reservations";
+
 class Guests extends Component {
-    
-    id = 0;
-    
-    createData = (description, number) => {
-        let id = this.id += 1;
-        return { id, description, number};
+    componentWillMount() {
+        this.props.getReservations()
     }
-    
-    data = [
-        this.createData('Occupants', 38),
-        this.createData('Checking Out Today', 12),
-        this.createData('Reservations', 9),
-        this.createData('Guests this Month', 5),
-        this.createData('Guests Last Month (June)', 3),
-    ];
-    
+
+    getUncheckedReservations = () => {
+        let count = 0
+        this.props.reservations.forEach(reservation => {
+            if (!reservation.status)
+                count++
+        })
+
+        return count
+    }
+
+    getCheckedInGuest = () => {
+        let count = 0
+        this.props.reservations.forEach(reservation => {
+            if (reservation.status === 'CHECKED IN')
+                count++
+        })
+
+        return count
+    }
     
     render() {
         return (
             <Grid item md={4} xs={12}>
                 <Paper style={this.props.style.paper}>
-                    <h3 style={this.props.style.paperTitle}>Guests</h3>
+                    <h3 style={this.props.style.paperTitle}>Guests Snapshot</h3>
     
                     <Table >
                         <TableHead>
@@ -41,16 +50,42 @@ class Guests extends Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {this.data.map(n => {
-                                return (
-                                    <TableRow key={n.id}>
-                                        <TableCell component="th" scope="row">
-                                            {n.description}
-                                        </TableCell>
-                                        <TableCell style={{color: 'green'}} numeric>{n.number}</TableCell>
-                                    </TableRow>
-                                );
-                            })}
+
+                            <TableRow>
+                                <TableCell component="th" scope="row">
+                                    Checked in guests
+                                </TableCell>
+                                <TableCell style={{color: 'green'}} numeric>{this.getCheckedInGuest()}</TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell component="th" scope="row">
+                                    Checking out today
+                                </TableCell>
+                                <TableCell style={{color: 'green'}} numeric>-</TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell component="th" scope="row">
+                                    Reservations
+                                </TableCell>
+                                <TableCell style={{color: 'green'}} numeric>{this.getUncheckedReservations()}</TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell component="th" scope="row">
+                                    Guests this month
+                                </TableCell>
+                                <TableCell style={{color: 'green'}} numeric>-</TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell component="th" scope="row">
+                                    Guests last month (October)
+                                </TableCell>
+                                <TableCell style={{color: 'green'}} numeric>-</TableCell>
+                            </TableRow>
+
                         </TableBody>
                     </Table>
                 </Paper>
@@ -60,9 +95,12 @@ class Guests extends Component {
 }
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        reservations: state.reservations
+    };
 }
 
 export default connect(
     mapStateToProps,
+    {getReservations}
 )(Guests);

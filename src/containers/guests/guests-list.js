@@ -39,7 +39,7 @@ class GuestsList extends Component {
                             this.props.reservations.map(n => {
                                 if (n.status === 'CHECKED IN') {
                                     return (
-                                        <TableRow key={n.id}>
+                                        <TableRow onClick={() => this.viewReservation(n.id)} key={n.id} className="tableStyle">
                                             <TableCell component="th" scope="row">
                                                 <strong>{n.guestName}</strong>
                                             </TableCell>
@@ -52,7 +52,6 @@ class GuestsList extends Component {
                                         </TableRow>
                                     );
                                 }
-                                return ''
                             })
                         }
                     </TableBody>
@@ -60,6 +59,13 @@ class GuestsList extends Component {
             </Paper>
 
         );
+    }
+
+
+    viewReservation = (id) => {
+        this.props.history.push({
+            pathname: `/Reservations/${id}`,
+        })
     }
 }
 

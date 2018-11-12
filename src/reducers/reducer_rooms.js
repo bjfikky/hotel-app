@@ -13,7 +13,7 @@ const rooms = (state = [], action) => {
                     id: room.id,
                     name: room.data().name,
                     type: room.data().type,
-                    guestName: room.data().guestName,
+                    guest: room.data().guest,
                     price: room.data().price,
                 })
             })
@@ -32,7 +32,6 @@ const rooms = (state = [], action) => {
                     id: room.id,
                     name: room.data().name,
                     type: room.data().type,
-                    empty: room.data().empty,
                     price: room.data().price,
                 })
             })
@@ -41,6 +40,12 @@ const rooms = (state = [], action) => {
 
             reservations.forEach(reservation => {
                 _.remove(rooms, function(room) {
+                    if (room.reservations) {
+                        for (let i = 0; i < room.reservations.length; i++) {
+                            console.log("here")
+                            return room.name === reservation.data().room & room.reservations[i].checkinDate === "11/22/2018";
+                        }
+                    }
                     return room.name === reservation.data().room;
                 });
             })
@@ -52,6 +57,31 @@ const rooms = (state = [], action) => {
         case 'ADD_GUEST_TO_ROOM':
             console.log(action.payload.id)
             break
+
+        case 'GET_BY_DATE':
+            state = []
+
+            let date = action.payload.date
+            let roomsgbd = []
+            let reservationsgbd = action.payload.reservations
+            let type = action.payload.type
+
+            action.payload.rooms.forEach(room => {
+                roomsgbd.push({
+                    id: room.id,
+                    name: room.data().name,
+                    type: room.data().type,
+                    price: room.data().price,
+                })
+            })
+
+            reservationsgbd.forEach(reservation => {
+                _.remove(roomsgbd, function(room) {
+                    return room.name === reservation.data().room & reservation.data().checkinDate === date;
+                });
+            })
+            console.log(roomsgbd)
+
 
         default: return state;
     }
