@@ -2,28 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca1e350d-5a50-4d72-a370-1430d6a1a01e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/listof/country-list.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/listof/state-list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/actions_auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/actions_auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/actions_reservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/actions_reservations.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/actions_rooms.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/actions_rooms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/primary-menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/primary-menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/dashboard/guests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/dashboard/guests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/dashboard/rooms.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/dashboard/rooms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/guests/guests-archive.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/guests/guests-archive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/guests/guests-list.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/guests/guests-list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/reservations/reservation-guest-form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/reservations/reservation-guest-form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/reservations/reservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/reservations/reservation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/reservations/reservations-list.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/reservations/reservations-list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/rooms/rooms-doubles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/rooms/rooms-doubles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/rooms/rooms-singles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/rooms/rooms-singles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/search-room/search-room-filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/search-room/search-room-filter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/search-room/search-room-item.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/search-room/search-room-item.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/search-room/search-rooms-list.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/search-room/search-rooms-list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listof/index.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/reducer_rooms.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/reducer_rooms.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -59,20 +40,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="actions_rooms.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="actions_rooms.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actions/actions_rooms.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+            <state relative-caret-position="330">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reducer_rooms.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="reducer_rooms.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/reducers/reducer_rooms.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="41" column="48" lean-forward="true" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
+            <state relative-caret-position="659">
+              <caret line="57" column="136" selection-start-line="57" selection-start-column="136" selection-end-line="57" selection-end-column="136" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reservation.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/reservations/reservation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -104,7 +100,7 @@
       <file leaf-file-name="reservation-search-form.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/reservations/reservation-search-form.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
+            <state relative-caret-position="-122">
               <caret line="102" column="85" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="85" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -190,8 +186,8 @@
         <option value="$PROJECT_DIR$/src/containers/reservations/reservation-guest-form.js" />
         <option value="$PROJECT_DIR$/src/containers/rooms/rooms-singles.js" />
         <option value="$PROJECT_DIR$/src/actions/actions_reservations.js" />
-        <option value="$PROJECT_DIR$/src/reducers/reducer_rooms.js" />
         <option value="$PROJECT_DIR$/src/actions/actions_rooms.js" />
+        <option value="$PROJECT_DIR$/src/reducers/reducer_rooms.js" />
       </list>
     </option>
   </component>
@@ -378,12 +374,12 @@
       <workItem from="1534890405592" duration="1503000" />
       <workItem from="1538952598031" duration="13000" />
       <workItem from="1539470650409" duration="5682000" />
-      <workItem from="1540255796560" duration="106702000" />
+      <workItem from="1540255796560" duration="111750000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="213190000" />
+    <option name="totallyTimeSpent" value="218238000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -398,7 +394,7 @@
     <frame x="0" y="23" width="1596" height="1350" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1784127" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1784127" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.12609737" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -407,7 +403,7 @@
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.17717478" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.17717478" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TypeScript" order="8" />
@@ -739,26 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/reservations/reservation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/reservations/reservation-search-form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="102" column="85" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="85" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/reservations/reservation-guest-form.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="417">
@@ -796,17 +772,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/reducer_rooms.js">
+    <entry file="file://$PROJECT_DIR$/src/actions/actions_rooms.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="48" lean-forward="true" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
+        <state relative-caret-position="330">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/actions_rooms.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/reservations/reservation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+        <state relative-caret-position="300">
+          <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/reservations/reservation-search-form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-122">
+          <caret line="102" column="85" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/reducer_rooms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="659">
+          <caret line="57" column="136" selection-start-line="57" selection-start-column="136" selection-end-line="57" selection-end-column="136" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

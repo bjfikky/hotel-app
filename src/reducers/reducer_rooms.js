@@ -1,4 +1,6 @@
 import _ from 'lodash'
+import moment from 'moment'
+import range from 'moment-range'
 
 const rooms = (state = [], action) => {
 
@@ -25,32 +27,72 @@ const rooms = (state = [], action) => {
         case 'GET_AVAILABLE_ROOMS':
             let rooms = []
 
+            let allrooms =  []
+
+            let format = "MM/DD/YYYY"
+
+            let checkinDate = moment(action.payload.checkinDate).format('L')
+            let checkoutDate = moment(action.payload.checkoutDate).format('L')
+
+            let range = moment().is
+
+
+
             state = []
 
+
             action.payload.rooms.forEach(room => {
-                rooms.push({
+                allrooms.push({
                     id: room.id,
                     name: room.data().name,
+                    reservations: room.data().reservations,
                     type: room.data().type,
                     price: room.data().price,
                 })
             })
 
-            let reservations = action.payload.reservations
-
-            reservations.forEach(reservation => {
-                _.remove(rooms, function(room) {
-                    if (room.reservations) {
-                        for (let i = 0; i < room.reservations.length; i++) {
-                            console.log("here")
-                            return room.name === reservation.data().room & room.reservations[i].checkinDate === "11/22/2018";
-                        }
+            action.payload.rooms.forEach(room => {
+                for (let i = 0; i < room.data().reservations.length; i++) {
+                    if ( moment(room.data().reservations[i].checkinDate, format).isBetween( moment(checkinDate, format), moment(checkoutDate, format) ) ||
+                        moment(room.data().reservations[i].checkoutDate, format).isBetween( moment(checkinDate, format), moment(checkoutDate, format) ) ||
+                        (room.data().reservations[i].checkinDate === checkinDate & room.data().reservations[i].checkoutDate === checkoutDate)
+                    ) {
+                        rooms.push({
+                            id: room.id,
+                            name: room.data().name,
+                            reservations: room.data().reservations,
+                            type: room.data().type,
+                            price: room.data().price,
+                        })
                     }
-                    return room.name === reservation.data().room;
-                });
+                }
+
+                // if (room.data().reservations.length === 0) {
+                //     rooms.push({
+                //         id: room.id,
+                //         name: room.data().name,
+                //         reservations: room.data().reservations,
+                //         type: room.data().type,
+                //         price: room.data().price,
+                //     })
+                //
+                //
+                // }
+
             })
 
-            state = state.concat(rooms)
+            rooms.forEach(room => {
+                _.remove(allrooms, function (n) {
+                    return n.name === room.name
+                })
+            })
+
+
+            console.log(rooms)
+            console.log(allrooms)
+
+
+            state = state.concat(allrooms)
 
             return state
 

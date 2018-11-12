@@ -27,7 +27,9 @@ export const getAvailableRooms = (checkin, checkout, callback) => {
             dispatch({
                 type: 'GET_AVAILABLE_ROOMS',
                 payload: {
-                    rooms: rooms
+                    rooms: rooms,
+                    checkinDate: checkin,
+                    checkoutDate: checkout,
                 }
             })
             console.log("searching available rooms", checkin , checkout)
