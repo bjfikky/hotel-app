@@ -1,4 +1,6 @@
 
+
+
 const auth = (state = true, action) => {
     
     switch (action.type) {
@@ -12,12 +14,15 @@ const auth = (state = true, action) => {
 
             return state
 
+
         case 'LOGOUT':
             state = false
 
             return state
 
+
         default: return state;
+
     }
 };
 

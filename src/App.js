@@ -25,7 +25,9 @@ import './App.css';
 
 
 
+
 class App extends Component {
+
     render() {
         if (this.props.auth === false) {
             return (
@@ -86,6 +88,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(
-    mapStateToProps
+    mapStateToProps,
 )(App);
 

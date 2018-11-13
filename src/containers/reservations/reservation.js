@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+import moment from 'moment'
+
 import {getReservation} from "../../actions/actions_reservations";
 import {checkinReservation} from "../../actions/actions_reservations";
 import {checkoutReservation} from "../../actions/actions_reservations";
@@ -30,11 +32,17 @@ class Reservation extends Component {
                         <Paper style={{ padding: 20, margin: 20}}>
                             <h4>Reservation Details</h4>
                             <div>
-                                <p style={{color: '#3f51b5'}}>Reservation Number: {this.props.reservation.id} </p>
-                                <p style={{color: '#3f51b5'}}>Room: {this.props.reservation.room} </p>
-                                <p style={{color: '#3f51b5'}}>Status: {this.props.reservation.status} </p>
-                                <p style={{color: '#3f51b5'}}>Checkin Date: {this.props.reservation.checkin}</p>
-                                <p style={{color: '#3f51b5'}}>Checkout Date: {this.props.reservation.checkout} <em>*(4 nights)</em></p>
+                                <p style={{padding: "10px 0"}}>Reservation Number: <span style={{color: '#3f51b5', padding: "0px 10px", fontWeight: 'bolder'}}>{this.props.reservation.id}</span> </p>
+                                <p style={{padding: "10px 0"}}>Room: <span style={{color: '#3f51b5', padding: "0px 10px", fontWeight: 'bolder'}}>{this.props.reservation.room} </span></p>
+
+                                {
+                                    this.props.reservation.status ?
+                                        <p style={{padding: "10px 0"}}>Status: <span style={{color: '#3f51b5', padding: "0px 10px", fontWeight: 'bolder'}}>{this.props.reservation.status} </span></p> : ''
+                                }
+
+
+                                <p style={{padding: "10px 0"}}>Checkin Date: <span style={{color: '#3f51b5', padding: "0px 10px", fontWeight: 'bolder'}}>{this.props.reservation.checkin}</span></p>
+                                <p style={{padding: "10px 0"}}>Checkout Date: <span style={{color: '#3f51b5', padding: "0px 10px", fontWeight: 'bolder'}}>{this.props.reservation.checkout} <em>*({this.numberOfNights()} nights)</em></span></p>
                             </div>
 
                             <hr/>
@@ -43,25 +51,25 @@ class Reservation extends Component {
                             <Grid container>
                                 <Grid item md={4}>
                                     <div>
-                                        <h6>Name:</h6>
-                                        <p>{this.props.reservation.firstName} {this.props.reservation.lastName}</p>
+                                        <h5>Name:</h5>
+                                        <p style={{color: '#3f51b5', fontWeight: 'bolder'}}>{this.props.reservation.firstName} {this.props.reservation.lastName}</p>
                                     </div>
 
                                     <div>
-                                        <h6>Phone Number:</h6>
-                                        <p>{this.props.reservation.phone}</p>
+                                        <h5>Phone Number:</h5>
+                                        <p style={{color: '#3f51b5', fontWeight: 'bolder'}}>{this.props.reservation.phone}</p>
                                     </div>
                                 </Grid>
 
                                 <Grid item md={8}>
                                     <div>
-                                        <h6>Email Address:</h6>
-                                        <p>{this.props.reservation.email}</p>
+                                        <h5>Email Address:</h5>
+                                        <p style={{color: '#3f51b5', fontWeight: 'bolder'}}>{this.props.reservation.email}</p>
                                     </div>
 
                                     <div>
-                                        <h6>Address:</h6>
-                                        <p>{this.props.reservation.address}, {this.props.reservation.city} - {this.props.reservation.zipCode}, {this.props.reservation.country}</p>
+                                        <h5>Address:</h5>
+                                        <p style={{color: '#3f51b5', fontWeight: 'bolder'}}>{this.props.reservation.address}, {this.props.reservation.city} - {this.props.reservation.zipCode}, {this.props.reservation.country}</p>
                                     </div>
                                 </Grid>
 
@@ -87,6 +95,12 @@ class Reservation extends Component {
         );
     }
 
+
+    numberOfNights = () => {
+        let from = moment(this.props.reservation.checkin, 'MM/DD/YYYY')
+        let to = moment(this.props.reservation.checkout, 'MM/DD/YYYY')
+        return to.diff(from, 'days')
+    }
 
     checkin = () => {
         this.props.checkinReservation(this.props.match.params.id, () => {

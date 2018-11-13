@@ -19,6 +19,7 @@ const reservation = (state = [], action) => {
                 email: data.data().guest.email,
                 phone: data.data().guest.phone,
                 address: data.data().guest.address,
+                state: data.data().guest.state,
                 city: data.data().guest.city,
                 zipCode: data.data().guest.zipCode,
                 country: data.data().guest.country,

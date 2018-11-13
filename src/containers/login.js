@@ -30,6 +30,7 @@ class Login extends Component {
     }
 
     render() {
+        console.log(this.props.auth)
         return (
             <form onSubmit={this.handleLogin}>
                 <div  style={formStyle}>
