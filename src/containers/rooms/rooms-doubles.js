@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import {getRooms} from "../../actions/actions_rooms";
+import {getRoomsByDate} from "../../actions/actions_rooms";
 
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -9,10 +10,21 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import TextField from "@material-ui/core/es/TextField/TextField";
+import Button from "@material-ui/core/es/Button/Button";
+import moment from "moment";
 
 
 
 class DoubleRooms extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            date: this.getTodaysDate()
+        }
+    }
+
     componentWillMount() {
         this.props.getRooms()
     }
@@ -23,6 +35,24 @@ class DoubleRooms extends Component {
         return (
             <Paper style={{padding: '20px'}}>
                 <h3>Double Rooms</h3>
+
+                <form action="">
+                    <TextField
+                        id="date"
+                        label="Check by Date"
+                        name="date"
+                        type="date"
+                        value={this.state.date}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        style={{margin: "10px 30px"}}
+                        onChange={this.handleInputChange}
+                    />
+
+                    <Button variant="contained" color="primary" onClick={this.handleCheck}>Check</Button>
+
+                </form>
 
                 <Table >
                     <TableHead>
@@ -36,9 +66,9 @@ class DoubleRooms extends Component {
                     <TableBody>
                         {
                             this.props.rooms.map(n => {
-    console.log("test")
+
                                 if (n.type === 'double') {
-                                    if (n.guest) {
+                                    if (n.isOccupied) {
                                         statusColor = 'red'
                                     } else {
                                         statusColor = 'green'
@@ -50,11 +80,12 @@ class DoubleRooms extends Component {
                                                 <strong>{n.name}</strong>
                                             </TableCell>
 
-                                            <TableCell style={{color: statusColor }}>{n.guest ? n.guest.name  : 'empty'}</TableCell>
+                                            <TableCell style={{color: statusColor }}  >
+                                                {n.isOccupied ? n.reservation.firstName + " " + n.reservation.lastName  : 'empty'}
+                                            </TableCell>
 
-                                            <TableCell style={{color: statusColor }}>{n.guest ? n.guest.checkinDate  : ''}</TableCell>
-
-                                            <TableCell style={{color: statusColor }}>{n.guest ? n.guest.checkoutDate  : ''}</TableCell>
+                                            <TableCell style={{color: statusColor }}>{n.isOccupied ? n.reservation.checkinDate  : ''}</TableCell>
+                                            <TableCell style={{color: statusColor }}>{n.isOccupied ? n.reservation.checkoutDate  : ''}</TableCell>
                                         </TableRow>
                                     )
                                 }
@@ -67,6 +98,22 @@ class DoubleRooms extends Component {
 
         );
     }
+
+
+    getTodaysDate = (days = 0) => {
+        let date = moment(Date.now(), 'x').add(days, 'days')
+        return date.format('YYYY-MM-DD')
+    }
+
+    handleInputChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    handleCheck = () => {
+        this.props.getRoomsByDate(this.state.date)
+    }
 }
 
 function mapStateToProps(state) {
@@ -77,5 +124,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    {getRooms}
+    {getRooms, getRoomsByDate}
 )(DoubleRooms);

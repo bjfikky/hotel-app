@@ -9,30 +9,25 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 import {getRooms} from "../../actions/actions_rooms";
+import {getRoomsByDate} from "../../actions/actions_rooms";
+import TextField from "@material-ui/core/es/TextField/TextField";
+import moment from "moment";
+import Button from "@material-ui/core/es/Button/Button";
 
 
 
 class SuiteRooms extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            date: this.getTodaysDate()
+        }
+    }
+
     componentWillMount() {
-        this.props.getRooms()
+        this.props.getRoomsByDate(this.state.date)
     }
-
-    //TODO: Add ReservationSearchForm Dates
-
-    id = 0;
-
-    createData = (roomName, status, reservation) => {
-        let id = this.id += 1;
-        return { id, roomName, status, reservation};
-    }
-
-    data = [
-        this.createData('101 Suite', 'empty', 26),
-        this.createData('103 Suite', 'empty', 8),
-        this.createData('105 Suite', 'Benjamin Orimoloye', 11),
-        this.createData('107 Suite', 'empty', 5),
-        this.createData('109 Suite', 'James Manuel', 2),
-    ];
 
 
     render() {
@@ -41,6 +36,24 @@ class SuiteRooms extends Component {
         return (
             <Paper style={{padding: '20px'}}>
                 <h3>Suites</h3>
+
+                <form action="">
+                    <TextField
+                        id="date"
+                        label="Check by Date"
+                        name="date"
+                        type="date"
+                        value={this.state.date}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        style={{margin: "10px 30px"}}
+                        onChange={this.handleInputChange}
+                    />
+
+                    <Button variant="contained" color="primary" onClick={this.handleCheck}>Check</Button>
+
+                </form>
 
                 <Table >
                     <TableHead>
@@ -51,37 +64,56 @@ class SuiteRooms extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.props.rooms.map(n => {
+                        {
 
-                            if (n.type === 'suite') {
+                            this.props.rooms.map(n => {
 
-                                if (n.empty) {
-                                    statusColor = 'red'
-                                } else {
-                                    statusColor = 'green'
+                                if (n.type === 'suite') {
+                                    if (n.isOccupied) {
+                                        statusColor = 'red'
+                                    } else {
+                                        statusColor = 'green'
+                                    }
+
+                                    return (
+                                        <TableRow key={n.id}>
+                                            <TableCell component="th" scope="row">
+                                                <strong>{n.name}</strong>
+                                            </TableCell>
+
+                                            <TableCell style={{color: statusColor }}  >
+                                                {n.isOccupied ? n.reservation.firstName + " " + n.reservation.lastName  : 'empty'}
+                                            </TableCell>
+
+                                            <TableCell style={{color: statusColor }}>{n.isOccupied ? n.reservation.checkinDate  : ''}</TableCell>
+                                            <TableCell style={{color: statusColor }}>{n.isOccupied ? n.reservation.checkoutDate  : ''}</TableCell>
+                                        </TableRow>
+                                    )
                                 }
 
-                                return (
-                                    <TableRow key={n.id}>
-                                        <TableCell component="th" scope="row">
-                                            <strong>{n.name}</strong>
-                                        </TableCell>
+                            })
 
-                                        <TableCell style={{color: statusColor }}  >
-                                            {n.guestName ? n.guestName  : 'empty'}
-                                        </TableCell>
-
-                                        <TableCell>{n.reservation}</TableCell>
-                                    </TableRow>
-                                );
-                            }
-                            return ''
-                        })}
+                        }
                     </TableBody>
                 </Table>
             </Paper>
 
         );
+    }
+
+    getTodaysDate = (days = 0) => {
+        let date = moment(Date.now(), 'x').add(days, 'days')
+        return date.format('YYYY-MM-DD')
+    }
+
+    handleInputChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    handleCheck = () => {
+        this.props.getRoomsByDate(this.state.date)
     }
 }
 
@@ -93,5 +125,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    {getRooms}
+    {getRooms, getRoomsByDate}
 )(SuiteRooms);

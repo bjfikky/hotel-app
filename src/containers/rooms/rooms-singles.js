@@ -86,8 +86,8 @@ class SingleRooms extends Component {
                                                     {n.isOccupied ? n.reservation.firstName + " " + n.reservation.lastName  : 'empty'}
                                                 </TableCell>
 
-                                                <TableCell style={{color: statusColor }}>{n.guest ? n.guest.checkinDate  : ''}</TableCell>
-                                                <TableCell style={{color: statusColor }}>{n.guest ? n.guest.checkoutDate  : ''}</TableCell>
+                                                <TableCell style={{color: statusColor }}>{n.isOccupied ? n.reservation.checkinDate  : ''}</TableCell>
+                                                <TableCell style={{color: statusColor }}>{n.isOccupied ? n.reservation.checkoutDate  : ''}</TableCell>
                                             </TableRow>
                                         )
                                     }
