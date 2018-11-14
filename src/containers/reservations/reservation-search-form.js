@@ -165,7 +165,7 @@ class ReservationSearchForm extends Component {
 
     handleSearchFormSubmit = (event) => {
         event.preventDefault()
-        console.log(this.state.checkin, this.state.checkout)
+
         this.props.getAvailableRooms(this.state.checkin, this.state.checkout, () => {
             console.log("calling the call back")
             this.props.history.push({

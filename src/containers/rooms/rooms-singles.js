@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import * as moment from 'moment';
 
 import {getRooms} from "../../actions/actions_rooms";
 import {getRoomsByDate} from "../../actions/actions_rooms";
@@ -20,12 +21,12 @@ class SingleRooms extends Component {
         super(props)
 
         this.state = {
-            date: ''
+            date: this.getTodaysDate()
         }
     }
 
     componentWillMount() {
-        this.props.getRooms()
+        this.props.getRoomsByDate(this.state.date)
     }
 
     render() {
@@ -37,13 +38,15 @@ class SingleRooms extends Component {
 
                     <form action="">
                         <TextField
-                            id="outlined-name"
-                            label="Date"
+                            id="date"
+                            label="Check by Date"
                             name="date"
+                            type="date"
                             value={this.state.date}
-                            margin="normal"
-                            variant="outlined"
-                            style={{margin: '10px 30px'}}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            style={{margin: "10px 30px"}}
                             onChange={this.handleInputChange}
                         />
 
@@ -57,7 +60,7 @@ class SingleRooms extends Component {
                         <TableHead>
                             <TableRow>
                                 <TableCell>Room Name</TableCell>
-                                <TableCell>Occupied</TableCell>
+                                <TableCell>Occupied or Reserved </TableCell>
                                 <TableCell>Checkin Date</TableCell>
                                 <TableCell>CheckOut Date</TableCell>
                             </TableRow>
@@ -67,7 +70,7 @@ class SingleRooms extends Component {
                                 this.props.rooms.map(n => {
 
                                     if (n.type === 'single') {
-                                        if (n.guest) {
+                                        if (n.isOccupied) {
                                             statusColor = 'red'
                                         } else {
                                             statusColor = 'green'
@@ -80,7 +83,7 @@ class SingleRooms extends Component {
                                                 </TableCell>
 
                                                 <TableCell style={{color: statusColor }}  >
-                                                    {n.guest ? n.guest.name  : 'empty'}
+                                                    {n.isOccupied ? n.reservation.firstName + " " + n.reservation.lastName  : 'empty'}
                                                 </TableCell>
 
                                                 <TableCell style={{color: statusColor }}>{n.guest ? n.guest.checkinDate  : ''}</TableCell>
@@ -99,6 +102,12 @@ class SingleRooms extends Component {
         );
     }
 
+
+    getTodaysDate = (days = 0) => {
+        let date = moment(Date.now(), 'x').add(days, 'days')
+        return date.format('YYYY-MM-DD')
+    }
+
     handleInputChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -106,7 +115,7 @@ class SingleRooms extends Component {
     }
 
     handleCheck = () => {
-        this.props.getRoomsByDate('', this.state.date)
+        this.props.getRoomsByDate(this.state.date)
     }
 }
 

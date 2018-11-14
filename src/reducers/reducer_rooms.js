@@ -34,8 +34,6 @@ const rooms = (state = [], action) => {
             let checkinDate = moment(action.payload.checkinDate).format('L')
             let checkoutDate = moment(action.payload.checkoutDate).format('L')
 
-            let range = moment().is
-
 
 
             state = []
@@ -55,7 +53,11 @@ const rooms = (state = [], action) => {
                 for (let i = 0; i < room.data().reservations.length; i++) {
                     if ( moment(room.data().reservations[i].checkinDate, format).isBetween( moment(checkinDate, format), moment(checkoutDate, format) ) ||
                         moment(room.data().reservations[i].checkoutDate, format).isBetween( moment(checkinDate, format), moment(checkoutDate, format) ) ||
-                        (room.data().reservations[i].checkinDate === checkinDate & room.data().reservations[i].checkoutDate === checkoutDate)
+                        (room.data().reservations[i].checkinDate === checkinDate & room.data().reservations[i].checkoutDate === checkoutDate) ||
+                        room.data().reservations[i].checkinDate === checkinDate ||
+                        room.data().reservations[i].checkoutDate === checkoutDate ||
+                        room.data().reservations[i].checkinDate === checkoutDate ||
+                        room.data().reservations[i].checkoutDate === checkinDate
                     ) {
                         rooms.push({
                             id: room.id,
@@ -66,18 +68,6 @@ const rooms = (state = [], action) => {
                         })
                     }
                 }
-
-                // if (room.data().reservations.length === 0) {
-                //     rooms.push({
-                //         id: room.id,
-                //         name: room.data().name,
-                //         reservations: room.data().reservations,
-                //         type: room.data().type,
-                //         price: room.data().price,
-                //     })
-                //
-                //
-                // }
 
             })
 
@@ -98,31 +88,64 @@ const rooms = (state = [], action) => {
 
         case 'ADD_GUEST_TO_ROOM':
             console.log(action.payload.id)
-            break
+            break;
 
-        case 'GET_BY_DATE':
+
+
+        case 'GET_ROOMS_BY_DATE':
             state = []
 
             let date = action.payload.date
-            let roomsgbd = []
-            let reservationsgbd = action.payload.reservations
-            let type = action.payload.type
+            date = moment(date, 'YYYY-MM-DD').format('L')
+
+            let theRooms = []
+
+            let availableRooms = []
 
             action.payload.rooms.forEach(room => {
-                roomsgbd.push({
+                availableRooms.push({
                     id: room.id,
                     name: room.data().name,
+                    reservations: room.data().reservations,
                     type: room.data().type,
                     price: room.data().price,
                 })
             })
 
-            reservationsgbd.forEach(reservation => {
-                _.remove(roomsgbd, function(room) {
-                    return room.name === reservation.data().room & reservation.data().checkinDate === date;
-                });
+
+
+            action.payload.rooms.forEach(room => {
+                for (let i = 0; i < room.data().reservations.length; i++) {
+                    if ( moment(date, format).isBetween( moment(room.data().reservations[i].checkinDate, format), moment(room.data().reservations[i].checkoutDate, format) )
+                        || date === room.data().reservations[i].checkinDate || date === room.data().reservations[i].checkoutDate
+
+                    ) {
+                        theRooms.push({
+                            id: room.id,
+                            name: room.data().name,
+                            reservations: room.data().reservations,
+                            type: room.data().type,
+                            price: room.data().price,
+                            isOccupied: true,
+                            reservation: room.data().reservations[i]
+                        })
+                    }
+                }
+
             })
-            console.log(roomsgbd)
+
+            theRooms.forEach(room => {
+                _.remove(availableRooms, function (n) {
+                    return n.name === room.name
+                })
+            })
+
+
+            state = _.concat(theRooms, availableRooms)
+
+            console.log("action get rooms by date", state)
+
+            return state
 
 
         default: return state;

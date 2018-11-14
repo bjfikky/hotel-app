@@ -1,24 +1,22 @@
 
 
-
-const auth = (state = true, action) => {
+const auth = (state = true , action) => {
     
     switch (action.type) {
         case 'LOGIN':
-
-            if (action.payload.error) {
-                state = false
-            } else {
-                state = true
+            if (action.payload === undefined) {
+                return state
             }
 
-            return state
+            return true;
+
+
+        case 'LOGIN_ERROR':
+            return false
 
 
         case 'LOGOUT':
-            state = false
-
-            return state
+            return false
 
 
         default: return state;

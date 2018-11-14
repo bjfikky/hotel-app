@@ -1,4 +1,5 @@
 import firebase from '../config/firebaseConfig'
+import reservations from "../reducers/reducer_reservations";
 
 
 export const getReservations = () => {
@@ -55,8 +56,8 @@ export const addReservation = (reservation, callback) => {
             reservationDate: new Date()
 
         }).then((data) => {
-            firebase.firestore().collection("rooms").doc(reservation.roomId).set({
-                reservations: [
+            firebase.firestore().collection("rooms").doc(reservation.roomId).update({
+                reservations: firebase.firestore.FieldValue.arrayUnion(
                     {
                         reservationDate: new Date(),
                         reservationNumber: data.id,
@@ -67,8 +68,8 @@ export const addReservation = (reservation, callback) => {
                         email: reservation.email,
                         phone: reservation.phone,
                     }
-                ]
-            }, {merge: true})
+                )
+            })
 
             dispatch({
                 type: 'ADD_RESERVATION'
