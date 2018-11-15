@@ -1,6 +1,6 @@
 
 
-const auth = (state = true , action) => {
+const auth = (state = false , action) => {
     
     switch (action.type) {
         case 'LOGIN':
@@ -12,11 +12,14 @@ const auth = (state = true , action) => {
 
 
         case 'LOGIN_ERROR':
-            return false
+            return false;
 
 
         case 'LOGOUT':
-            return false
+            return false;
+
+        case 'SET_TRUE':
+            return true;
 
 
         default: return state;

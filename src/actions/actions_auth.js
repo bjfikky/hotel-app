@@ -19,13 +19,22 @@ export const login = (email, password, callback) => {
 
     return (dispatch) => {
         auth.then((data) => {
-            console.log(data.user)
+            console.log("signing in", data.user.email)
             dispatch({
                 type: 'LOGIN',
                 payload: data.user
             })
 
             callback()
+        })
+    }
+}
+
+
+export const setInitAuthToTrue = () => {
+    return (dispatch) => {
+        dispatch({
+            type: 'SET_TRUE'
         })
     }
 }
@@ -43,11 +52,11 @@ export const logout = (callback) => {
     })
 
     return (dispatch) => {
-        auth.then(() => {
+        auth.then((data) => {
             dispatch({
                 type: 'LOGOUT',
             })
-
+            console.log(data, "signing out")
             callback()
         })
     }

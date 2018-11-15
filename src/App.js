@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
+import firebase from 'firebase'
 
 import Login from './containers/login';
 import Menu from './components/primary-menu';
@@ -21,12 +22,25 @@ import ReservationSearchForm from './containers/reservations/reservation-search-
 import ReservationsList from './containers/reservations/reservations-list';
 import ReservationGuestForm from './containers/reservations/reservation-guest-form';
 
+import {setInitAuthToTrue} from "./actions/actions_auth";
+
+
 import './App.css';
 
 
 
 
 class App extends Component {
+
+    componentWillMount() {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.props.setInitAuthToTrue()
+
+
+            } else console.log("not logged in")
+        });
+    }
 
     render() {
         if (this.props.auth === false) {
@@ -63,7 +77,7 @@ class App extends Component {
                             <Route exact path="/Rooms/Empty" component={EmptyRooms}/>
                             <Route exact path="/Guests/All" component={GuestsList}/>
                             <Route exact path="/Guests/Archive" component={GuestsArchive}/>
-                            <Route component={NotFound}/>
+                            <Redirect to="/" component={Dashboard}/>
                         </Switch>
                     </div>
                 </Fragment>
@@ -82,12 +96,13 @@ const NotFound = () => {
 };
 
 function mapStateToProps(state) {
+    console.log(state)
     return {
         auth: state.auth
     }
 }
 
 export default connect(
-    mapStateToProps,
+    mapStateToProps,{setInitAuthToTrue}
 )(App);
 

@@ -29,8 +29,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import PersonAdd from '@material-ui/icons/PersonAdd';
 import FormatListBulleted from '@material-ui/icons/FormatListBulleted';
 import Archive from '@material-ui/icons/Archive';
-import RemoveCircle from '@material-ui/icons/RemoveCircle';
-import AddCircle from '@material-ui/icons/AddCircleOutline';
+import Logo from '@material-ui/icons/StoreMallDirectory'
 import One from '@material-ui/icons/LooksOne';
 import Two from '@material-ui/icons/LooksTwo';
 import Star from '@material-ui/icons/Star';
@@ -249,7 +248,7 @@ class MenuDrawer extends Component {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="title" color="inherit" style={styles.flex}>
-                            <Link to="/" style={{textDecoration: 'none', color: '#fff' }}>Hotel App</Link>
+                            <Link to="/" style={{textDecoration: 'none', color: '#fff' }}>Falbek Hotels Management System</Link>
                             
                         </Typography>
                         
