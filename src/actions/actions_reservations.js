@@ -81,6 +81,50 @@ export const addReservation = (reservation, callback) => {
 }
 
 
+export const deleteReservation = (id, callback) => {
+    console.log("deleting reservation", id)
+    let reservationsRef = firebase.firestore().collection("reservations").doc(id).get()
+
+
+    return (dispatch) => {
+        reservationsRef.then(data => {
+            let roomId = data.data().roomId
+            let reservationNumber  = data.id
+
+            console.log("The room id is", roomId)
+
+            firebase.firestore().collection("rooms").doc(roomId).get().then(room => {
+                room.data().reservations.forEach((reservation, index) => {
+
+                    let reservationToBeDeletedFromRoom = {}
+
+                    if (reservation.reservationNumber === reservationNumber) {
+                        reservationToBeDeletedFromRoom = reservation
+
+                        console.log(reservationToBeDeletedFromRoom)
+
+                        firebase.firestore().collection("rooms").doc(roomId).update({
+                            reservations: firebase.firestore.FieldValue.arrayRemove(reservationToBeDeletedFromRoom)
+                        }).then(() => {
+                            firebase.firestore().collection("reservations").doc(id).delete().then(() => {
+                                dispatch({
+                                    type: 'DELETE_RESERVATION',
+                                    payload: ''
+                                })
+
+                                callback()
+                            })
+                        })
+                    }
+
+                })
+            })
+        })
+    }
+}
+
+
+
 export const checkinReservation = (id, callback) => {
 
     let reservation = firebase.firestore().collection("reservations").doc(id).get()

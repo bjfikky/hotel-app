@@ -29,7 +29,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import PersonAdd from '@material-ui/icons/PersonAdd';
 import FormatListBulleted from '@material-ui/icons/FormatListBulleted';
 import Archive from '@material-ui/icons/Archive';
-import Logo from '@material-ui/icons/StoreMallDirectory'
+
 import One from '@material-ui/icons/LooksOne';
 import Two from '@material-ui/icons/LooksTwo';
 import Star from '@material-ui/icons/Star';

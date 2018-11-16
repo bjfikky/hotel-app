@@ -10,8 +10,8 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import TextField from "@material-ui/core/es/TextField/TextField";
-import Button from "@material-ui/core/es/Button/Button";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 import moment from "moment";
 
 

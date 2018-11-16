@@ -10,9 +10,9 @@ import TableRow from '@material-ui/core/TableRow';
 
 import {getRooms} from "../../actions/actions_rooms";
 import {getRoomsByDate} from "../../actions/actions_rooms";
-import TextField from "@material-ui/core/es/TextField/TextField";
+import TextField from "@material-ui/core/TextField";
 import moment from "moment";
-import Button from "@material-ui/core/es/Button/Button";
+import Button from "@material-ui/core/Button";
 
 
 

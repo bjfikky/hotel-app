@@ -6,6 +6,7 @@ import moment from 'moment'
 import {getReservation} from "../../actions/actions_reservations";
 import {checkinReservation} from "../../actions/actions_reservations";
 import {checkoutReservation} from "../../actions/actions_reservations";
+import {deleteReservation} from "../../actions/actions_reservations";
 
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -78,18 +79,28 @@ class Reservation extends Component {
                     </Grid>
                 </Grid>
 
+                <Grid justify="space-between" container>
+                    <Grid item>
+                        {
+                            this.props.reservation.status === 'CHECKED IN'
+                                ?
+                                <Button onClick={this.checkout} variant="contained" color="primary">
+                                    Check Out Guest
+                                </Button>
+                                :
+                                <Button onClick={this.checkin} variant="contained" color="primary">
+                                    Check In Guest
+                                </Button>
+                        }
+                    </Grid>
 
-                {
-                    this.props.reservation.status === 'CHECKED IN'
-                        ?
-                        <Button onClick={this.checkout} variant="contained" color="primary">
-                            Check Out Guest
+                    <Grid item>
+                        <Button onClick={this.handleDeleteReservation}  variant="contained" color="secondary">
+                            Delete Reservation
                         </Button>
-                        :
-                        <Button onClick={this.checkin} variant="contained" color="primary">
-                            Check In Guest
-                        </Button>
-                }
+                    </Grid>
+
+                </Grid>
 
             </div>
         );
@@ -114,6 +125,20 @@ class Reservation extends Component {
         })
     }
 
+    handleDeleteReservation = () => {
+        let confirm = window.confirm("Are you sure you want to delete this reservation?");
+
+        if (confirm) {
+            let id = this.props.match.params.id;
+            this.props.deleteReservation(id, () => {
+                window.alert("Reservation Deleted")
+                this.props.history.push({
+                    pathname: '/Reservations/All',
+                })
+            })
+        }
+    }
+
 }
 
 function mapStateToProps(state) {
@@ -124,5 +149,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    {getReservation, checkinReservation, checkoutReservation}
+    {getReservation, checkinReservation, checkoutReservation, deleteReservation}
 )(Reservation);
