@@ -70,7 +70,7 @@ class Reservation extends Component {
 
                                     <div>
                                         <h5>Address:</h5>
-                                        <p style={{color: '#3f51b5', fontWeight: 'bolder'}}>{this.props.reservation.address}, {this.props.reservation.city} - {this.props.reservation.zipCode}, {this.props.reservation.country}</p>
+                                        <p style={{color: '#3f51b5', fontWeight: 'bolder'}}>{this.props.reservation.address}, {this.props.reservation.city}, {this.props.reservation.state} - {this.props.reservation.zipCode}, {this.props.reservation.country}</p>
                                     </div>
                                 </Grid>
 

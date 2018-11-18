@@ -64,9 +64,9 @@ class ReservationGuestForm extends Component {
                             <Paper style={{ padding: 20, margin: 20}}>
                                 <h5>Reservation Details</h5>
                                 <div>
-                                    <p style={{color: '#3f51b5'}}>Room: {this.props.location.state.room} </p>
+                                    <p>Room: <span style={{color: '#3f51b5', fontWeight: 'bold'}}>{this.props.location.state.room}</span></p>
 
-                                    <p style={{color: '#3f51b5'}}>Date: {this.props.location.state.checkin} - {this.props.location.state.checkout} <em>*(<strong>{this.numberOfNights()}</strong> nights)</em></p>
+                                    <p>Date: <span style={{color: '#3f51b5', fontWeight: 'bold'}}>{this.props.location.state.checkin} - {this.props.location.state.checkout} <em>*[<strong>{this.numberOfNights()} {this.numberOfNights() > 1 ? 'nights' : 'night'}</strong>]</em></span></p>
                                 </div>
 
                                 <h5>Guest Information</h5>

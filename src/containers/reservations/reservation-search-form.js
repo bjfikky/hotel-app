@@ -166,6 +166,11 @@ class ReservationSearchForm extends Component {
     handleSearchFormSubmit = (event) => {
         event.preventDefault()
 
+        if (this.state.checkin === '' || this.state.checkout === '') {
+            window.alert("Error! You must have a checkin and a checkout date")
+            return;
+        }
+
         this.props.getAvailableRooms(this.state.checkin, this.state.checkout, () => {
             console.log("calling the call back")
             this.props.history.push({
