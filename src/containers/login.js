@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+import firebase from '../config/firebaseConfig'
+
 import {login} from "../actions/actions_auth";
 
 
@@ -30,7 +32,7 @@ class Login extends Component {
     }
 
     render() {
-        console.log(this.props.auth)
+
         return (
             <form onSubmit={this.handleLogin}>
                 <div  style={formStyle}>
@@ -73,12 +75,40 @@ class Login extends Component {
 
     handleLogin = (event) => {
         event.preventDefault()
-        console.log(this.state.email)
-        this.props.login(this.state.email, this.state.password, () => {
-            this.props.history.push({
-                pathname: '/',
+        this.signUp(this.state.email, this.state.password)
+    }
+
+
+
+    signUp = (email, password) => {
+        let users = firebase.firestore().collection("users").get()
+
+        let match = false
+
+        users.then(users => {
+            users.forEach(user => {
+                if (user.data().email === email && user.data().password === password && user.data().signedUp === false) {
+                    firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+                        firebase.firestore().collection("users").doc(user.id).set({signedUp: true},{merge: true})
+                    })
+                    match = true
+
+
+                }
+
+                if (user.data().email === email && user.data().password === password && user.data().signedUp === true) {
+
+                    this.props.login(email, password, () => {
+                        this.props.history.push({
+                            pathname: '/',
+                        })
+                    })
+
+                }
             })
         })
+
+
     }
 }
 

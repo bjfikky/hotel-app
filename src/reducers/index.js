@@ -5,6 +5,7 @@ import Rooms from './reducer_rooms'
 import Reservations from './reducer_reservations'
 import Reservation from './reducer_reservation'
 
+
 const rootReducer = combineReducers({
     auth: Auth,
     rooms: Rooms,

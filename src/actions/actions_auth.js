@@ -1,8 +1,12 @@
 import firebase from '../config/firebaseConfig'
 
 export const login = (email, password, callback) => {
+
     let auth = firebase.auth().signInWithEmailAndPassword(email, password).catch(error => {
-        alert(error)
+        window.alert(error.message)
+
+        console.log("EROOR LOGIN")
+
 
         return (dispatch) => {
             auth.then(() => {
@@ -29,6 +33,8 @@ export const login = (email, password, callback) => {
         })
     }
 }
+
+
 
 
 export const setInitAuthToTrue = () => {

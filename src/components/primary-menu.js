@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
-
+import firebase from 'firebase'
 import {logout} from "../actions/actions_auth";
 
 
@@ -38,7 +38,6 @@ import MailIcon from '@material-ui/icons/Mail';
 
 
 
-
 const styles = {
     list: {
         width: 250,
@@ -59,12 +58,29 @@ const styles = {
 };
 
 class MenuDrawer extends Component {
-    state = {
-        left: false,
-        reservationOpen: true,
-        guestOpen: true,
-        roomOpen: false
-    };
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            left: false,
+            reservationOpen: true,
+            guestOpen: true,
+            roomOpen: false,
+            userEmail: ''
+        };
+    }
+
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.setState({
+                    userEmail: user.email
+                })
+
+
+            } else console.log("not logged in")
+        });
+    }
     
     toggleDrawer = (open) => () => {
         this.setState({
@@ -231,6 +247,7 @@ class MenuDrawer extends Component {
 
 
                 <Divider/>
+
     
                 <ListItem button onClick={this.logout}>
                     
@@ -257,6 +274,18 @@ class MenuDrawer extends Component {
                                 <MailIcon />
                             </Badge>
                         </Button>
+
+                        {
+                            this.state.userEmail === 'admin@hotelapp.com' ?
+                                <Button>
+                                    <Link to="/Admin" style={{color: "white", textDecoration: 'none'}}>
+                                        Admin
+                                    </Link>
+                                </Button>
+                                : ''
+                        }
+
+
                         
                         <Button onClick={this.logout} color="inherit">Logout</Button>
                     </Toolbar>

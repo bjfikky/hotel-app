@@ -8,6 +8,12 @@
     cursor: pointer;
 }
 
+
+.bin:hover {
+    background-color: #e8e8e8;
+    cursor: pointer;
+}
+
 #confirmation {
     width: 250px;
 }

@@ -94,6 +94,8 @@ class Reservation extends Component {
                         }
                     </Grid>
 
+
+
                     <Grid item>
                         <Button onClick={this.handleDeleteReservation}  variant="contained" color="secondary">
                             Delete Reservation
@@ -123,6 +125,19 @@ class Reservation extends Component {
         this.props.checkoutReservation(this.props.match.params.id, () => {
             this.props.getReservation(this.props.match.params.id)
         })
+    }
+
+
+    handleEditReservation = () => {
+        let confirm = window.confirm("Are you sure you want to edit the guest's information for this reservation?")
+
+        if (confirm) {
+            let id = this.props.match.params.id;
+
+            this.props.history.push({
+                pathname: `/Reservations/Edit/${id}`
+            })
+        }
     }
 
     handleDeleteReservation = () => {
